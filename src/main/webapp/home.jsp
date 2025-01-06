@@ -22,7 +22,7 @@
       <a href="html/admin_page.html" class="logo">Jom Makan<span>.</span></a>
       <nav class="navbar">
          <a href="home.jsp">home</a>
-         <a href="html/shop.html">shop</a>
+         <a href="shop.jsp">shop</a>
          <a href="html/orders.html">orders</a>
          <a href="html/about.html">about</a>
          <a href="html/contact.html">contact</a>
@@ -35,9 +35,9 @@
          <a href="html/cart.html"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
       </div>
       <div class="profile">
-         <img src="../uploaded_img/default.png" alt="">
+         <img src="uploaded_img" alt="">
          <p>Guest</p>
-         <a href="../user_profile_update.html" class="btn">update profile</a>
+         <a href="html/user_profile_update.html" class="btn">update profile</a>
          <a href="login.jsp" class="delete-btn">logout</a>
          <div class="flex-btn">
             <a href="login.jsp" class="option-btn">login</a>
@@ -107,7 +107,7 @@
       <div class="box">
          <h3>quick links</h3>
          <a href="home.jsp"> <i class="fas fa-angle-right"></i> home</a>
-         <a href="html/shop.html"> <i class="fas fa-angle-right"></i> shop</a>
+         <a href="shop.jsp"> <i class="fas fa-angle-right"></i> shop</a>
          <a href="html/about.html"> <i class="fas fa-angle-right"></i> about</a>
          <a href="html/contact.html"> <i class="fas fa-angle-right"></i> contact</a>
       </div>
