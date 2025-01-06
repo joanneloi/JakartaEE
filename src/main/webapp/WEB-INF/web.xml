@@ -6,7 +6,7 @@
 
     <!-- Welcome file list -->
     <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file> <!-- Specify the default page here -->
+        <welcome-file>home.jsp</welcome-file> <!-- Specify the default page here -->
     </welcome-file-list>
 
     <!-- Other configurations like servlets, filters, etc. -->
