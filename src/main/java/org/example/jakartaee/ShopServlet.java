@@ -1,91 +1,62 @@
 package org.example.jakartaee;
 
+import java.io.*;
+import java.util.*;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.http.HttpSession;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
-@WebServlet(name = "ShopServlet", value = "/shop-servlet")
+@WebServlet("/ShopServlet")
 public class ShopServlet extends HttpServlet {
 
-    // Handle GET request
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // Set attributes in the request to send data to the JSP
-        request.setAttribute("message", "Welcome to Jom Makan Shop! Explore our spices and herbs.");
-
-        // Forward the request to shop.jsp
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/shop.jsp");
-        try {
-            dispatcher.forward(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Handle POST request
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        String action = request.getParameter("action");
+        String productId = request.getParameter("productId");
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-        // Get parameters from the form
-        String productId = request.getParameter("pid");
-        int quantity = Integer.parseInt(request.getParameter("qty"));
-        String action = null;
-
-        // Determine which button was clicked
-        if (request.getParameter("add_to_cart") != null) {
-            action = "cart";
-        } else if (request.getParameter("add_to_wishlist") != null) {
-            action = "wishlist";
-        }
-
-        if ("cart".equals(action)) {
-            addToCart(session, productId, quantity);
-        } else if ("wishlist".equals(action)) {
-            addToWishlist(session, productId);
-        }
-
-        // Set success message
-        String message = "cart".equals(action) ? "Product added to cart!" : "Product added to wishlist!";
-        request.setAttribute("message", message);
-
-        // Forward the request back to shop.jsp
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/shop.jsp");
-        try {
-            dispatcher.forward(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void addToCart(HttpSession session, String productId, int quantity) {
+        // Initialize cart and wishlist if they don't exist
         Map<String, Integer> cart = (Map<String, Integer>) session.getAttribute("cart");
         if (cart == null) {
             cart = new HashMap<>();
             session.setAttribute("cart", cart);
         }
 
-        cart.put(productId, cart.getOrDefault(productId, 0) + quantity);
-        session.setAttribute("cart_count", cart.size());
-    }
-
-    private void addToWishlist(HttpSession session, String productId) {
-        Set<String> wishlist = (Set<String>) session.getAttribute("wishlist");
+        List<String> wishlist = (List<String>) session.getAttribute("wishlist");
         if (wishlist == null) {
-            wishlist = new HashSet<>();
+            wishlist = new ArrayList<>();
             session.setAttribute("wishlist", wishlist);
         }
 
-        wishlist.add(productId);
-        session.setAttribute("wishlist_count", wishlist.size());
+        if ("addToCart".equals(action)) {
+            // Add to cart
+            cart.put(productId, cart.getOrDefault(productId, 0) + quantity);
+            session.setAttribute("cartSize", cart.values().stream().mapToInt(Integer::intValue).sum());
+        } else if ("addToWishlist".equals(action)) {
+            // Add to wishlist
+            if (!wishlist.contains(productId)) {
+                wishlist.add(productId);
+            }
+            session.setAttribute("wishlistSize", wishlist.size());
+        }
+
+        // Calculate total price (assuming you have a method to get price by productId)
+        double totalPrice = calculateTotalPrice(cart);
+        session.setAttribute("totalPrice", totalPrice);
+
+        // Send JSON response
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter out = response.getWriter();
+        out.print("{\"cartSize\":" + session.getAttribute("cartSize") +
+                ",\"wishlistSize\":" + session.getAttribute("wishlistSize") +
+                ",\"totalPrice\":" + totalPrice + "}");
+        out.flush();
     }
 
-    public void destroy() {}
+    private double calculateTotalPrice(Map<String, Integer> cart) {
+        // Implement price calculation logic here
+        // This is a placeholder implementation
+        return cart.values().stream().mapToDouble(quantity -> quantity * 10.0).sum();
+    }
 }
