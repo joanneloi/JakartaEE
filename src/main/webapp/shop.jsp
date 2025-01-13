@@ -22,16 +22,16 @@
       <nav class="navbar">
          <a href="home.jsp">home</a>
          <a href="shop.jsp">shop</a>
-         <a href="orders.html">orders</a>
+         <a href="orders.jsp">orders</a>
          <a href="about.jsp">about</a>
-         <a href="contact.html">contact</a>
+         <a href="contact.jsp">contact</a>
       </nav>
       <div class="icons">
          <div id="menu-btn" class="fas fa-bars"></div>
          <div id="user-btn" class="fas fa-user"></div>
-         <a href="search_page.html" class="fas fa-search"></a>
+         <a href="search_page.jsp" class="fas fa-search"></a>
          <a href="wishlist.jsp"><i class="fas fa-heart"></i><span id="wishlist-count">(0)</span></a>
-         <a href="cart.html"><i class="fas fa-shopping-cart"></i><span id="cart-count">(0)</span></a>
+         <a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span id="cart-count">(0)</span></a>
       </div>
       <div class="profile">
          <img src="uploaded_img" alt="">
@@ -45,13 +45,6 @@
       </div>
    </div>
 </header>
-
-<%--<section class="p-category">--%>
-<%--   <a href="html/category.html?category=spices">Aromatic Spices</a>--%>
-<%--   <a href="html/category.html?category=nutty">Sweet And Nutty</a>--%>
-<%--   <a href="html/category.html?category=herbal">Herbal</a>--%>
-<%--   <a href="html/category.html?category=spicy">Hot And Spicy</a>--%>
-<%--</section>--%>
 
 <main>
    <section class="products">
@@ -73,7 +66,9 @@
             <button class="fas fa-eye quick-view-btn" data-product="kunyit"></button>
             <img src="project%20images/kunyit.png" alt="Kunyit (Turmeric)">
             <div class="name">Kunyit (Turmeric)</div>
-            <input type="number" min="1" value="1" class="qty">
+            <label>
+               <input type="number" min="1" value="1" class="qty">
+            </label>
             <button class="btn wishlist-btn">Add To Wishlist</button>
             <button class="btn cart-btn">Add To Cart</button>
          </div>
@@ -83,7 +78,9 @@
             <button class="fas fa-eye quick-view-btn" data-product="lawang"></button>
             <img src="project%20images/bunga_lawang.png" alt="Bunga Lawang">
             <div class="name">Bunga Lawang (Star Anise)</div>
-            <input type="number" min="1" value="1" class="qty">
+            <label>
+               <input type="number" min="1" value="1" class="qty">
+            </label>
             <button class="btn wishlist-btn">Add To Wishlist</button>
             <button class="btn cart-btn">Add To Cart</button>
          </div>
