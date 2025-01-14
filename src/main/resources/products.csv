@@ -1,4 +1,3 @@
-id,name,price,image,origin,description,category
 1,Kunyit (Turmeric),RM5/-,"/project_images/kunyit.png","Origin: Kuala Kangsar, Perak","Turmeric is a bright yellow root widely used in Malaysian curries and traditional medicine.",Aromatic Spices
 2,Bunga Lawang (Star Anise),RM5/-,"/project_images/bunga_lawang.png","Origin: Muar, Johor","Star anise is a key ingredient in Malaysian dishes like beef rendang and herbal soups.",spices
 3,Bunga Cengkih (Cloves),RM5/-,"/project_images/bunga_cengkih.png","Origin: Balik Pulau, Penang","Cloves are aromatic flower buds used in curries, nasi briyani, and spiced teas.",spices

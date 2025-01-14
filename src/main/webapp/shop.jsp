@@ -150,7 +150,7 @@
 
       container.innerHTML = products.map(product => `
         <div class="box" data-category="${product.category}">
-            <div class="price">RM${product.price}/-</div>
+            <<div class="price">${product.price}</div>
             <button class="fas fa-eye quick-view-btn" data-product="${product.id}"></button>
             <div class="image-container">
                 <img src="${product.image}"
