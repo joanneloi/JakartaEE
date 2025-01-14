@@ -1,4 +1,6 @@
 package org.example.jakartaee;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpSession;
 import org.example.project.UserProfile;
 import org.example.project.UserProfileManager;
 
@@ -12,32 +14,34 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(name = "LoginServlet", value = "/login-servlet")
 public class LoginServlet extends HttpServlet {
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String email = request.getParameter("email");
-        String password = request.getParameter("pass");
+    private static final String ERROR_REQUIRED_FIELDS = "Email and password are required.";
+    private static final String ERROR_INVALID_CREDENTIALS = "Invalid email or password!";
 
-        if (email == null || email.isBlank() || password == null || password.isBlank()) {
-            request.setAttribute("message", "Email and password are required.");
-            forwardToLogin(request, response);
-            return;
-        }
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
 
         UserProfile user = UserProfileManager.findUserByEmail(email);
 
-        if (user != null && user.getPassword().equals(password)) {
-            response.sendRedirect("home.jsp");
-        } else {
-            request.setAttribute("message", "Invalid email or password.");
-            forwardToLogin(request, response);
+        if (email == null || email.isBlank() || password == null || password.isBlank()) {
+            request.setAttribute("message", ERROR_REQUIRED_FIELDS);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+            System.out.println("login");
+            return;
         }
-    }
 
-    private void forwardToLogin(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-            dispatcher.forward(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (user != null && user.getPassword().equals(password)) {
+            HttpSession session = request.getSession();
+            session.setAttribute("userName", user.getName());
+            session.setAttribute("userImage", user.getImagePath());
+            System.out.println("User Name: " + session.getAttribute("userName"));
+            System.out.println("User Image: " + session.getAttribute("userImage"));
+            response.sendRedirect("home.jsp");
+            System.out.println("Redirecting to home.jsp");
+        } else {
+            System.out.println("unsuccessful login");
+            request.setAttribute("errorMessage", ERROR_INVALID_CREDENTIALS);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 }

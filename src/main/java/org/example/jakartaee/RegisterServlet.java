@@ -15,7 +15,7 @@ import java.nio.file.Paths;
 
 @WebServlet(name = "RegisterServlet", value = "/register-servlet")
 @MultipartConfig
-public class registerServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
     private static final String UPLOAD_DIR = "uploads";
     private static final String CSV_FILE = "csv_file/user_profiles.csv";
 

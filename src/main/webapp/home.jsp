@@ -35,15 +35,16 @@
          <a href="html/cart.html"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
       </div>
       <div class="profile">
-         <img src="../uploaded_img/default.png" alt="">
-         <p>Guest</p>
-         <a href="../user_profile_update.html" class="btn">update profile</a>
+         <img src="<%= session.getAttribute("userImage") != null ? session.getAttribute("userImage") : "../uploaded_img/default.png" %>" alt="User Image">
+         <p><%= session.getAttribute("userName") != null ? session.getAttribute("userName") : "Guest" %></p>
+         <a href="user_profile_update.jsp" class="btn">update profile</a>
          <a href="login.jsp" class="delete-btn">logout</a>
          <div class="flex-btn">
             <a href="login.jsp" class="option-btn">login</a>
             <a href="register.jsp" class="option-btn">register</a>
          </div>
       </div>
+   </div>
    </div>
 </header>
 

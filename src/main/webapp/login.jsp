@@ -21,7 +21,7 @@
    <form action="login-servlet" method="POST">
       <h3>login now</h3>
       <input type="email" name="email" class="box" placeholder="enter your email" required>
-      <input type="password" name="pass" class="box" placeholder="enter your password" required>
+      <input type="password" name="password" class="box" placeholder="enter your password" required>
       <input type="submit" value="login now" class="btn" name="submit">
       <!-- new user will request to register an account before continue -->
       <p>don't have an account? <a href="register.jsp">register now</a></p>

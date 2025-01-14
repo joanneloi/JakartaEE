@@ -31,7 +31,7 @@ public class UserProfile {
 
     @Override
     public String toString() {
-        return email + "," + name + "," + password;
+        return email + "," + name + "," + password + "," + imagePath;
     }
 
     public void setImagePath(String imagePath) {
@@ -45,4 +45,6 @@ public class UserProfile {
         }
         return new UserProfile(parts[0], parts[1], parts[2], parts[3]);
     }
+
+
 }
