@@ -6,9 +6,20 @@
 
     <!-- Welcome file list -->
     <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file> <!-- Specify the default page here -->
+        <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
 
-    <!-- Other configurations like servlets, filters, etc. -->
+    <!-- Servlet mapping for RegisterServlet -->
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>org.example.project.registerServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- Other configurations like filters, etc. -->
 
 </web-app>

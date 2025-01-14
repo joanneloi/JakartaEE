@@ -11,36 +11,36 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="../css/style.css">
+   <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
 
 <header class="header">
    <div class="flex">
-      <a href="admin_page.html" class="logo">Jom Makan<span>.</span></a>
+      <a href="html/admin_page.html" class="logo">Jom Makan<span>.</span></a>
       <nav class="navbar">
-        <a href="../home.jsp">home</a>
-        <a href="shop.html">shop</a>
-        <a href="orders.html">orders</a>
-        <a href="about.html">about</a>
-        <a href="contact.html">contact</a>
+        <a href="home.jsp">home</a>
+        <a href="html/shop.html">shop</a>
+        <a href="html/orders.html">orders</a>
+        <a href="about.jsp">about</a>
+        <a href="html/contact.html">contact</a>
       </nav>
       <div class="icons">
          <div id="menu-btn" class="fas fa-bars"></div>
          <div id="user-btn" class="fas fa-user"></div>
-         <a href="search_page.html" class="fas fa-search"></a>
-         <a href="wishlist.html"><i class="fas fa-heart"></i><span>(0)</span></a>
-         <a href="cart.html"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
+         <a href="html/search_page.html" class="fas fa-search"></a>
+         <a href="html/wishlist.html"><i class="fas fa-heart"></i><span>(0)</span></a>
+         <a href="html/cart.html"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
       </div>
       <div class="profile">
          <img src="uploaded_img/default.png" alt="">
          <p>Guest</p>
-         <a href="user_profile_update.html" class="btn">update profile</a>
-         <a href="login.html" class="delete-btn">logout</a>
+         <a href="user_profile_update.jsp" class="btn">update profile</a>
+         <a href="login.jsp" class="delete-btn">logout</a>
          <div class="flex-btn">
-            <a href="login.html" class="option-btn">login</a>
-            <a href="register.html" class="option-btn">register</a>
+            <a href="login.jsp" class="option-btn">login</a>
+            <a href="register.jsp" class="option-btn">register</a>
          </div>
       </div>
    </div>
@@ -50,7 +50,7 @@
 <section class="update-profile">
    <h1 class="title">update profile</h1>
    <form action="#" method="POST" enctype="multipart/form-data">
-      <img src="../uploaded_img/default.png" alt="">
+      <img src="uploaded_img/default.png" alt="">
       <div class="flex">
          <div class="inputBox">
             <span>username :</span>
@@ -71,7 +71,7 @@
       </div>
       <div class="flex-btn">
          <input type="submit" class="btn" value="update profile" name="update_profile">
-         <a href="../home.jsp" class="option-btn">go back</a>
+         <a href="home.jsp" class="option-btn">go back</a>
       </div>
    </form>
 
@@ -81,17 +81,17 @@
     <section class="box-container">
        <div class="box">
           <h3>quick links</h3>
-          <a href="../home.jsp"> <i class="fas fa-angle-right"></i> home</a>
-          <a href="shop.html"> <i class="fas fa-angle-right"></i> shop</a>
-          <a href="about.html"> <i class="fas fa-angle-right"></i> about</a>
-          <a href="contact.html"> <i class="fas fa-angle-right"></i> contact</a>
+          <a href="home.jsp"> <i class="fas fa-angle-right"></i> home</a>
+          <a href="html/shop.html"> <i class="fas fa-angle-right"></i> shop</a>
+          <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
+          <a href="html/contact.html"> <i class="fas fa-angle-right"></i> contact</a>
        </div>
        <div class="box">
           <h3>extra links</h3>
-          <a href="cart.html"> <i class="fas fa-angle-right"></i> cart</a>
-          <a href="wishlist.html"> <i class="fas fa-angle-right"></i> wishlist</a>
-          <a href="login.html"> <i class="fas fa-angle-right"></i> login</a>
-          <a href="register.html"> <i class="fas fa-angle-right"></i> register</a>
+          <a href="html/cart.html"> <i class="fas fa-angle-right"></i> cart</a>
+          <a href="html/wishlist.html"> <i class="fas fa-angle-right"></i> wishlist</a>
+          <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
+          <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>
        </div>
        <div class="box">
           <h3>contact info</h3>
@@ -111,7 +111,7 @@
     <p class="credit"> &copy; CAT201 Project 2024 by <span>Team YumYum</span> | Jom Makan </p>
  </footer>
 
- <script src="../js/script.js"></script>
+ <script src="js/script.js"></script>
 
 </body>
 </html>

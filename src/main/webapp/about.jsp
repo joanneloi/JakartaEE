@@ -11,7 +11,7 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="../css/style.css">
+   <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
@@ -21,10 +21,10 @@
    <div class="flex">
       <a href="admin_page.html" class="logo">Jom Makan<span>.</span></a>
       <nav class="navbar">
-        <a href="../home.jsp">home</a>
+        <a href="home.jsp">home</a>
         <a href="shop.html">shop</a>
         <a href="orders.html">orders</a>
-        <a href="about.html">about</a>
+        <a href="about.jsp">about</a>
         <a href="contact.html">contact</a>
       </nav>
 
@@ -42,10 +42,10 @@
          <img src="../uploaded_img/default.png" alt="">
          <p>Guest</p>
          <a href="user_profile_update.html" class="btn">update profile</a>
-         <a href="login.html" class="delete-btn">logout</a>
+         <a href="login.jsp" class="delete-btn">logout</a>
          <div class="flex-btn">
-            <a href="login.html" class="option-btn">login</a>
-            <a href="register.html" class="option-btn">register</a>
+            <a href="login.jsp" class="option-btn">login</a>
+            <a href="register.jsp" class="option-btn">register</a>
          </div>
       </div>
    </div>
@@ -112,7 +112,7 @@
          <h3>Syauqina</h3>
       </div>
       <div class="box">
-         <img src="../images/pic4.jpg" alt="">
+         <img src="images/pic4.jpg" alt="">
          <p>The spices are so fresh and fragrant! They've completely transformed my cooking.</p>
          <div class="stars">
             <i class="fas fa-star"></i>
@@ -124,7 +124,7 @@
          <h3>Joanne Loi</h3>
       </div>
       <div class="box">
-         <img src="../images/pic6.jpg" alt="">
+         <img src="images/pic6.jpg" alt="">
          <p>Saya suka kerana ia organik dan menyokong petani tempatan.</p>
          <div class="stars">
             <i class="fas fa-star"></i>
@@ -136,7 +136,7 @@
          <h3>Aqif Iman</h3>
       </div>
       <div class="box">
-         <img src="../images/pic6.jpg" alt="">
+         <img src="images/pic6.jpg" alt="">
          <p>种类很多，而且都是有机的！支持本地农民，很值得推荐</p>
          <div class="stars">
             <i class="fas fa-star"></i>
@@ -155,17 +155,17 @@
     <section class="box-container">
        <div class="box">
           <h3>quick links</h3>
-          <a href="../home.jsp"> <i class="fas fa-angle-right"></i> home</a>
+          <a href="home.jsp"> <i class="fas fa-angle-right"></i> home</a>
           <a href="shop.html"> <i class="fas fa-angle-right"></i> shop</a>
-          <a href="about.html"> <i class="fas fa-angle-right"></i> about</a>
+          <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
           <a href="contact.html"> <i class="fas fa-angle-right"></i> contact</a>
        </div>
        <div class="box">
           <h3>extra links</h3>
           <a href="cart.html"> <i class="fas fa-angle-right"></i> cart</a>
           <a href="wishlist.html"> <i class="fas fa-angle-right"></i> wishlist</a>
-          <a href="login.html"> <i class="fas fa-angle-right"></i> login</a>
-          <a href="register.html"> <i class="fas fa-angle-right"></i> register</a>
+          <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
+          <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>
        </div>
        <div class="box">
           <h3>contact info</h3>
@@ -185,7 +185,7 @@
     <p class="credit"> &copy; CAT201 Project 2024 by <span>Team YumYum</span> | Jom Makan </p>
  </footer>
 
- <script src="../js/script.js"></script>
+ <script src="js/script.js"></script>
 
 </body>
 </html>
