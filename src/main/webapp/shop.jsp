@@ -119,15 +119,17 @@
    async function fetchProductData() {
       try {
          console.log('Fetching product data...');
-         const response = await fetch('products');
+         const response = await fetch('products'); // Ensure the URL is correct
          if (!response.ok) {
-            throw new Error('Failed to fetch product data');
+            throw new Error(`HTTP error! status: ${response.status}`);
          }
          const data = await response.json();
          console.log('Received products:', data);
          return data;
       } catch (error) {
          console.error('Error fetching product data:', error);
+         const container = document.getElementById('product-container');
+         container.innerHTML = '<p>Error loading products. Please try again later.</p>';
          return [];
       }
    }

@@ -17,7 +17,8 @@ public class ShopServlet extends HttpServlet {
         // Debug log
         System.out.println("ShopServlet doGet method called");
 
-        String filePath = getServletContext().getRealPath("/WEB-INF/products.csv");
+        // Update the file path to match the project structure
+        String filePath = getServletContext().getRealPath("/resources/products.csv");
         File csvFile = new File(filePath);
 
         // Debug log
