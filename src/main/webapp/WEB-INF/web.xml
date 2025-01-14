@@ -9,6 +9,15 @@
         <welcome-file>home.jsp</welcome-file> <!-- Specify the default page here -->
     </welcome-file-list>
 
-    <!-- Other configurations like servlets, filters, etc. -->
+    <servlet>
+        <servlet-name>ShopServlet</servlet-name>
+        <servlet-class>org.example.jakartaee.ShopServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShopServlet</servlet-name>
+        <url-pattern>/products</url-pattern>
+    </servlet-mapping>
+
+
 
 </web-app>

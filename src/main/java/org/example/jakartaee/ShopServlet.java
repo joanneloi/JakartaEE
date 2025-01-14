@@ -1,62 +1,73 @@
 package org.example.jakartaee;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.*;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.WebServlet;
+import com.google.gson.Gson;
 
-@WebServlet("/ShopServlet")
 public class ShopServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        String action = request.getParameter("action");
-        String productId = request.getParameter("productId");
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-        // Initialize cart and wishlist if they don't exist
-        Map<String, Integer> cart = (Map<String, Integer>) session.getAttribute("cart");
-        if (cart == null) {
-            cart = new HashMap<>();
-            session.setAttribute("cart", cart);
+        // Debug log
+        System.out.println("ShopServlet doGet method called");
+
+        String filePath = getServletContext().getRealPath("/WEB-INF/products.csv");
+        File csvFile = new File(filePath);
+
+        // Debug log
+        System.out.println("CSV file path: " + filePath);
+        System.out.println("CSV file exists: " + csvFile.exists());
+
+        if (!csvFile.exists()) {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            response.getWriter().write("Error: CSV file not found at " + filePath);
+            return;
         }
 
-        List<String> wishlist = (List<String>) session.getAttribute("wishlist");
-        if (wishlist == null) {
-            wishlist = new ArrayList<>();
-            session.setAttribute("wishlist", wishlist);
-        }
+        List<Map<String, String>> products = new ArrayList<>();
 
-        if ("addToCart".equals(action)) {
-            // Add to cart
-            cart.put(productId, cart.getOrDefault(productId, 0) + quantity);
-            session.setAttribute("cartSize", cart.values().stream().mapToInt(Integer::intValue).sum());
-        } else if ("addToWishlist".equals(action)) {
-            // Add to wishlist
-            if (!wishlist.contains(productId)) {
-                wishlist.add(productId);
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+            String headerLine = br.readLine(); // Skip header
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                if (values.length < 7) continue;
+
+                Map<String, String> product = new HashMap<>();
+                product.put("id", values[0].trim());
+                product.put("name", values[1].trim());
+                product.put("price", String.format("%.2f", Double.parseDouble(values[2].trim())));
+                // Keep the image path as is from CSV
+                product.put("image", values[3].trim());
+                product.put("origin", values[4].trim());
+                // Remove quotes from description
+                product.put("description", values[5].trim().replace("\"", ""));
+                product.put("category", values[6].trim());
+                products.add(product);
+
+                // Debug log
+                System.out.println("Added product: " + product);
             }
-            session.setAttribute("wishlistSize", wishlist.size());
         }
 
-        // Calculate total price (assuming you have a method to get price by productId)
-        double totalPrice = calculateTotalPrice(cart);
-        session.setAttribute("totalPrice", totalPrice);
-
-        // Send JSON response
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        PrintWriter out = response.getWriter();
-        out.print("{\"cartSize\":" + session.getAttribute("cartSize") +
-                ",\"wishlistSize\":" + session.getAttribute("wishlistSize") +
-                ",\"totalPrice\":" + totalPrice + "}");
-        out.flush();
-    }
 
-    private double calculateTotalPrice(Map<String, Integer> cart) {
-        // Implement price calculation logic here
-        // This is a placeholder implementation
-        return cart.values().stream().mapToDouble(quantity -> quantity * 10.0).sum();
+        Gson gson = new Gson();
+        String jsonOutput = gson.toJson(products);
+
+        // Debug log
+        System.out.println("Sending JSON response: " + jsonOutput);
+
+        PrintWriter out = response.getWriter();
+        out.write(jsonOutput);
+        out.flush();
     }
 }
