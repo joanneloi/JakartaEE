@@ -4,6 +4,7 @@
              http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+
     <!-- Welcome file list -->
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file> <!-- Specify the default page here -->
