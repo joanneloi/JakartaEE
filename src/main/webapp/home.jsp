@@ -28,7 +28,6 @@
       <div class="icons">
          <div id="menu-btn" class="fas fa-bars"></div>
          <div id="user-btn" class="fas fa-user"></div>
-         <a href="html/search_page.html" class="fas fa-search"></a>
          <a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span>${not empty cart ? cart.itemCount : 0}</span></a>
       </div>
 
