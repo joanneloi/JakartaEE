@@ -22,7 +22,7 @@
       <a href="admin_page.html" class="logo">Jom Makan<span>.</span></a>
       <nav class="navbar">
         <a href="home.jsp">home</a>
-        <a href="shop.jsp">shop</a>
+        <a href="shop.html">shop</a>
         <a href="orders.html">orders</a>
         <a href="about.jsp">about</a>
         <a href="contact.html">contact</a>
@@ -39,7 +39,7 @@
 
       <!-- default profile: infomation user register -->
       <div class="profile">
-         <img src="uploaded_img/" alt="">
+         <img src="../uploaded_img/default.png" alt="">
          <p>Guest</p>
          <a href="user_profile_update.html" class="btn">update profile</a>
          <a href="login.jsp" class="delete-btn">logout</a>
@@ -55,18 +55,18 @@
 <section class="about">
    <div class="row">
       <div class="box">
-         <img src="images/about.png" alt="">
+         <img src="../images/about.png" alt="">
          <h3>why choose us?</h3>
          <p>We bring you the finest selection of authentic Malaysian spices, sourced sustainably and packed with natural goodness. Our commitment to quality ensures every product is fresh, organic, and free from artificial additives, making it the perfect choice for healthy, flavorful cooking while supporting local farmers and traditions.</p>
          <!-- When click 'contact us' button, it will jump to contact page. -->
-         <a href="contact.jsp" class="btn">contact us</a>
+         <a href="contact.html" class="btn">contact us</a>
       </div>
       <div class="box">
-         <img src="images/about2.png" alt="">
+         <img src="../images/about2.png" alt="">
          <h3>what we provide?</h3>
          <p>We offer a diverse range of premium Malaysian spices and ingredients, including fresh aromatic herbs, fiery chilies, nutty and sweet spices, and herbal blends. Additionally, we provide recipe inspiration, cooking tips, and curated spice sets to help you create authentic Malaysian dishes effortlessly. Whether you're a home cook or a professional chef, we have everything you need to bring the rich flavors of Malaysia to your table.</p>
          <!-- When click 'our shop' button, it will jump to shop page. -->
-         <a href="shop.jsp" class="btn">our shop</a>
+         <a href="shop.html" class="btn">our shop</a>
       </div>
    </div>
 </section>
@@ -76,7 +76,7 @@
    <h1 class="title">Clients Reviews</h1>
    <div class="box-container">
       <div class="box">
-         <img src="images/pic1.jpg" alt="">
+         <img src="../images/pic1.jpg" alt="">
          <p>The spices here are truly premium quality.</p>
          <div class="stars">
             <i class="fas fa-star"></i>
@@ -88,7 +88,7 @@
          <h3>Lee Chan</h3>
       </div>
       <div class="box">
-         <img src="images/pic2.jpg" alt="">
+         <img src="../images/pic2.jpg" alt="">
          <p>这里的香料非常棒，新鲜又香浓</p>
          <div class="stars">
             <i class="fas fa-star"></i>
@@ -100,7 +100,7 @@
          <h3>Yee Xuan</h3>
       </div>
       <div class="box">
-         <img src="images/pic7.png" alt="">
+         <img src="../images/pic7.png" alt="">
          <p>Rempahnya segar dan berkualiti tinggi.</p>
          <div class="stars">
             <i class="fas fa-star"></i>
@@ -156,7 +156,7 @@
        <div class="box">
           <h3>quick links</h3>
           <a href="home.jsp"> <i class="fas fa-angle-right"></i> home</a>
-          <a href="shop.jsp"> <i class="fas fa-angle-right"></i> shop</a>
+          <a href="shop.html"> <i class="fas fa-angle-right"></i> shop</a>
           <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
           <a href="contact.html"> <i class="fas fa-angle-right"></i> contact</a>
        </div>
