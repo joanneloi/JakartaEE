@@ -18,7 +18,7 @@
 <body>
 
 <section class="form-container">
-   <form action="register_servlet" enctype="multipart/form-data" method="POST">
+   <form action="register-servlet" enctype="multipart/form-data" method="POST">
       <h3>register now</h3>
       <input type="text" name="name" class="box" placeholder="enter your name" required>
       <input type="email" name="email" class="box" placeholder="enter your email" required>

@@ -11,7 +11,7 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="../css/style.css">
+   <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
@@ -21,10 +21,10 @@
    <div class="flex">
       <a href="admin_page.html" class="logo">Jom Makan<span>.</span></a>
       <nav class="navbar">
-        <a href="../home.jsp">home</a>
-        <a href="shop.html">shop</a>
+        <a href="home-servlet">home</a>
+        <a href="shop-servlet">shop</a>
         <a href="orders.html">orders</a>
-        <a href="about.html">about</a>
+        <a href="about.jsp">about</a>
         <a href="contact.html">contact</a>
       </nav>
 
@@ -33,19 +33,19 @@
          <div id="menu-btn" class="fas fa-bars"></div>
          <div id="user-btn" class="fas fa-user"></div>
          <a href="search_page.html" class="fas fa-search"></a>
-         <a href="wishlist.html"><i class="fas fa-heart"></i><span>(0)</span></a>
-         <a href="cart.html"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
+         <a href="wishlist.jsp"><i class="fas fa-heart"></i><span>(0)</span></a>
+         <a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
       </div>
 
       <!-- default profile: infomation user register -->
       <div class="profile">
-         <img src="../uploaded_img/default.png" alt="">
-         <p>Guest</p>
-         <a href="user_profile_update.html" class="btn">update profile</a>
-         <a href="login.html" class="delete-btn">logout</a>
+         <img src="<%= session.getAttribute("userImage") != null ? session.getAttribute("userImage") : "../uploaded_img/default.png" %>" alt="User Image">
+         <p><%= session.getAttribute("userName") != null ? session.getAttribute("userName") : "Guest" %></p>
+         <a href="user_profile_update.jsp" class="btn">update profile</a>
+         <a href="login.jsp" class="delete-btn">logout</a>
          <div class="flex-btn">
-            <a href="login.html" class="option-btn">login</a>
-            <a href="register.html" class="option-btn">register</a>
+            <a href="login.jsp" class="option-btn">login</a>
+            <a href="register.jsp" class="option-btn">register</a>
          </div>
       </div>
    </div>
@@ -55,18 +55,18 @@
 <section class="about">
    <div class="row">
       <div class="box">
-         <img src="../images/about.png" alt="">
+         <img src="images/about.png" alt="">
          <h3>why choose us?</h3>
          <p>We bring you the finest selection of authentic Malaysian spices, sourced sustainably and packed with natural goodness. Our commitment to quality ensures every product is fresh, organic, and free from artificial additives, making it the perfect choice for healthy, flavorful cooking while supporting local farmers and traditions.</p>
          <!-- When click 'contact us' button, it will jump to contact page. -->
          <a href="contact.html" class="btn">contact us</a>
       </div>
       <div class="box">
-         <img src="../images/about2.png" alt="">
+         <img src="images/about2.png" alt="">
          <h3>what we provide?</h3>
          <p>We offer a diverse range of premium Malaysian spices and ingredients, including fresh aromatic herbs, fiery chilies, nutty and sweet spices, and herbal blends. Additionally, we provide recipe inspiration, cooking tips, and curated spice sets to help you create authentic Malaysian dishes effortlessly. Whether you're a home cook or a professional chef, we have everything you need to bring the rich flavors of Malaysia to your table.</p>
          <!-- When click 'our shop' button, it will jump to shop page. -->
-         <a href="shop.html" class="btn">our shop</a>
+         <a href="shop-servlet" class="btn">our shop</a>
       </div>
    </div>
 </section>
@@ -76,7 +76,7 @@
    <h1 class="title">Clients Reviews</h1>
    <div class="box-container">
       <div class="box">
-         <img src="../images/pic1.jpg" alt="">
+         <img src="images/pic1.jpg" alt="">
          <p>The spices here are truly premium quality.</p>
          <div class="stars">
             <i class="fas fa-star"></i>
@@ -88,7 +88,7 @@
          <h3>Lee Chan</h3>
       </div>
       <div class="box">
-         <img src="../images/pic2.jpg" alt="">
+         <img src="images/pic2.jpg" alt="">
          <p>这里的香料非常棒，新鲜又香浓</p>
          <div class="stars">
             <i class="fas fa-star"></i>
@@ -100,7 +100,7 @@
          <h3>Yee Xuan</h3>
       </div>
       <div class="box">
-         <img src="../images/pic7.png" alt="">
+         <img src="images/pic7.png" alt="">
          <p>Rempahnya segar dan berkualiti tinggi.</p>
          <div class="stars">
             <i class="fas fa-star"></i>
@@ -112,7 +112,7 @@
          <h3>Syauqina</h3>
       </div>
       <div class="box">
-         <img src="../images/pic4.jpg" alt="">
+         <img src="images/pic4.jpg" alt="">
          <p>The spices are so fresh and fragrant! They've completely transformed my cooking.</p>
          <div class="stars">
             <i class="fas fa-star"></i>
@@ -124,7 +124,7 @@
          <h3>Joanne Loi</h3>
       </div>
       <div class="box">
-         <img src="../images/pic6.jpg" alt="">
+         <img src="images/pic6.jpg" alt="">
          <p>Saya suka kerana ia organik dan menyokong petani tempatan.</p>
          <div class="stars">
             <i class="fas fa-star"></i>
@@ -136,7 +136,7 @@
          <h3>Aqif Iman</h3>
       </div>
       <div class="box">
-         <img src="../images/pic6.jpg" alt="">
+         <img src="images/pic6.jpg" alt="">
          <p>种类很多，而且都是有机的！支持本地农民，很值得推荐</p>
          <div class="stars">
             <i class="fas fa-star"></i>
@@ -155,17 +155,17 @@
     <section class="box-container">
        <div class="box">
           <h3>quick links</h3>
-          <a href="../home.jsp"> <i class="fas fa-angle-right"></i> home</a>
-          <a href="shop.html"> <i class="fas fa-angle-right"></i> shop</a>
-          <a href="about.html"> <i class="fas fa-angle-right"></i> about</a>
+          <a href="home-servlet"> <i class="fas fa-angle-right"></i> home</a>
+          <a href="shop-servlet"> <i class="fas fa-angle-right"></i> shop</a>
+          <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
           <a href="contact.html"> <i class="fas fa-angle-right"></i> contact</a>
        </div>
        <div class="box">
           <h3>extra links</h3>
-          <a href="cart.html"> <i class="fas fa-angle-right"></i> cart</a>
-          <a href="wishlist.html"> <i class="fas fa-angle-right"></i> wishlist</a>
-          <a href="login.html"> <i class="fas fa-angle-right"></i> login</a>
-          <a href="register.html"> <i class="fas fa-angle-right"></i> register</a>
+          <a href="cart.jsp"> <i class="fas fa-angle-right"></i> cart</a>
+          <a href="wishlist.jsp"> <i class="fas fa-angle-right"></i> wishlist</a>
+          <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
+          <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>
        </div>
        <div class="box">
           <h3>contact info</h3>
@@ -185,7 +185,7 @@
     <p class="credit"> &copy; CAT201 Project 2024 by <span>Team YumYum</span> | Jom Makan </p>
  </footer>
 
- <script src="../js/script.js"></script>
+ <script src="js/script.js"></script>
 
 </body>
 </html>
