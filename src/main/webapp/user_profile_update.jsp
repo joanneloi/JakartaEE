@@ -21,7 +21,7 @@
       <a href="html/admin_page.html" class="logo">Jom Makan<span>.</span></a>
       <nav class="navbar">
         <a href="home-servlet">home</a>
-        <a href="shop.jsp">shop</a>
+        <a href="shop-servlet">shop</a>
         <a href="html/orders.html">orders</a>
         <a href="about.jsp">about</a>
         <a href="html/contact.html">contact</a>
@@ -30,7 +30,7 @@
          <div id="menu-btn" class="fas fa-bars"></div>
          <div id="user-btn" class="fas fa-user"></div>
          <a href="html/search_page.html" class="fas fa-search"></a>
-         <a href="html/wishlist.html"><i class="fas fa-heart"></i><span>(0)</span></a>
+<%--         <a href="html/wishlist.html"><i class="fas fa-heart"></i><span>(0)</span></a>--%>
          <a href="html/cart.html"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
       </div>
       <div class="profile">

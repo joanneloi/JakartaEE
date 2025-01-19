@@ -37,7 +37,7 @@
       <div id="menu-btn" class="fas fa-bars"></div>
       <div id="user-btn" class="fas fa-user"></div>
       <a href="search_page.html" class="fas fa-search"></a>
-      <a href="wishlist.jsp"><i class="fas fa-heart"></i><span>(0)</span></a>
+<%--      <a href="wishlist.jsp"><i class="fas fa-heart"></i><span>(0)</span></a>--%>
       <a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
     </div>
     <div class="profile">
@@ -83,7 +83,7 @@
     <div class="box">
       <h3>extra links</h3>
       <a href="cart.jsp"> <i class="fas fa-angle-right"></i> cart</a>
-      <a href="wishlist.jsp"> <i class="fas fa-angle-right"></i> wishlist</a>
+<%--      <a href="wishlist.jsp"> <i class="fas fa-angle-right"></i> wishlist</a>--%>
       <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
       <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>
     </div>
