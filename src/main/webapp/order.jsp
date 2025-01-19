@@ -90,7 +90,36 @@
 </section>
 
 <footer class="footer">
-   <!-- Footer content (unchanged) -->
+   <section class="box-container">
+      <div class="box">
+         <h3>quick links</h3>
+         <a href="home.jsp"> <i class="fas fa-angle-right"></i> home</a>
+         <a href="shop-servlet"> <i class="fas fa-angle-right"></i> shop</a>
+         <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
+         <a href="contact.html"> <i class="fas fa-angle-right"></i> contact</a>
+      </div>
+      <div class="box">
+         <h3>extra links</h3>
+         <a href="cart.jsp"> <i class="fas fa-angle-right"></i> cart</a>
+         <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
+         <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>
+      </div>
+      <div class="box">
+         <h3>contact info</h3>
+         <p> <i class="fas fa-phone"></i> +03-111-2222 </p>
+         <p> <i class="fas fa-phone"></i> +03-222-3333 </p>
+         <p> <i class="fas fa-envelope"></i> jommakan@gmail.com </p>
+         <p> <i class="fas fa-map-marker-alt"></i> Penang, Malaysia - 10150 </p>
+      </div>
+      <div class="box">
+         <h3>follow us</h3>
+         <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+         <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+         <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+         <a href="#"> <i class="fab fa-tiktok"></i> tiktok </a>
+      </div>
+   </section>
+   <p class="credit"> &copy; CAT201 Project 2024 by <span>Team YumYum</span> | Jom Makan </p>
 </footer>
 
 <script src="js/script.js"></script>
