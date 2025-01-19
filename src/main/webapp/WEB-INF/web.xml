@@ -13,7 +13,7 @@
 
     <!-- Welcome file list -->
     <welcome-file-list>
-        <welcome-file>home.jsp</welcome-file> <!-- Specify the default page here -->
+        <welcome-file>login.jsp</welcome-file> <!-- Specify the default page here -->
     </welcome-file-list>
 
     <servlet>
@@ -25,6 +25,14 @@
         <url-pattern>/shop-servlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>org.example.jakartaee.HomeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/home-servlet</url-pattern>
+    </servlet-mapping>
 
 
 </web-app>

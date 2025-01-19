@@ -19,29 +19,26 @@
    <!-- HEADER -->
 <header class="header">
    <div class="flex">
-      <a href="admin_page.html" class="logo">Jom Makan<span>.</span></a>
+      <a class="logo">Jom Makan<span>.</span></a>
       <nav class="navbar">
         <a href="home.jsp">home</a>
-        <a href="shop.jsp">shop</a>
-        <a href="orders.html">orders</a>
+        <a href="shop-servlet">shop</a>
+        <a href="order.jsp">orders</a>
         <a href="about.jsp">about</a>
-        <a href="contact.html">contact</a>
       </nav>
 
       <!-- icon in the header: navigation -->
       <div class="icons">
          <div id="menu-btn" class="fas fa-bars"></div>
          <div id="user-btn" class="fas fa-user"></div>
-         <a href="search_page.html" class="fas fa-search"></a>
-         <a href="wishlist.html"><i class="fas fa-heart"></i><span>(0)</span></a>
-         <a href="cart.html"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
+         <a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span>${not empty cart ? cart.itemCount : 0}</span></a>
       </div>
 
       <!-- default profile: infomation user register -->
       <div class="profile">
-         <img src="uploaded_img/" alt="">
-         <p>Guest</p>
-         <a href="user_profile_update.html" class="btn">update profile</a>
+         <img src="<%= session.getAttribute("userImage") != null ? session.getAttribute("userImage") : "../uploaded_img/default.png" %>" alt="User Image">
+         <p><%= session.getAttribute("userName") != null ? session.getAttribute("userName") : "Guest" %></p>
+         <a href="user_profile_update.jsp" class="btn">update profile</a>
          <a href="login.jsp" class="delete-btn">logout</a>
          <div class="flex-btn">
             <a href="login.jsp" class="option-btn">login</a>
@@ -66,7 +63,7 @@
          <h3>what we provide?</h3>
          <p>We offer a diverse range of premium Malaysian spices and ingredients, including fresh aromatic herbs, fiery chilies, nutty and sweet spices, and herbal blends. Additionally, we provide recipe inspiration, cooking tips, and curated spice sets to help you create authentic Malaysian dishes effortlessly. Whether you're a home cook or a professional chef, we have everything you need to bring the rich flavors of Malaysia to your table.</p>
          <!-- When click 'our shop' button, it will jump to shop page. -->
-         <a href="shop.jsp" class="btn">our shop</a>
+         <a href="shop-servlet" class="btn">our shop</a>
       </div>
    </div>
 </section>
@@ -151,39 +148,37 @@
 </section>
 
    <!-- FOOTER -->
-<footer class="footer">
-    <section class="box-container">
-       <div class="box">
-          <h3>quick links</h3>
-          <a href="home.jsp"> <i class="fas fa-angle-right"></i> home</a>
-          <a href="shop.jsp"> <i class="fas fa-angle-right"></i> shop</a>
-          <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
-          <a href="contact.html"> <i class="fas fa-angle-right"></i> contact</a>
-       </div>
-       <div class="box">
-          <h3>extra links</h3>
-          <a href="cart.html"> <i class="fas fa-angle-right"></i> cart</a>
-          <a href="wishlist.html"> <i class="fas fa-angle-right"></i> wishlist</a>
-          <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
-          <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>
-       </div>
-       <div class="box">
-          <h3>contact info</h3>
-          <p> <i class="fas fa-phone"></i> +03-111-2222 </p>
-          <p> <i class="fas fa-phone"></i> +03-222-3333 </p>
-          <p> <i class="fas fa-envelope"></i> jommakan@gmail.com </p>
-          <p> <i class="fas fa-map-marker-alt"></i> Penang, Malaysia - 10150 </p>
-       </div>
-       <div class="box">
-          <h3>follow us</h3>
-          <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
-          <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
-          <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
-          <a href="#"> <i class="fab fa-tiktok"></i> tiktok </a>
-       </div>
-    </section>
-    <p class="credit"> &copy; CAT201 Project 2024 by <span>Team YumYum</span> | Jom Makan </p>
- </footer>
+   <footer class="footer">
+      <section class="box-container">
+         <div class="box">
+            <h3>quick links</h3>
+            <a href="home-servlet"> <i class="fas fa-angle-right"></i> home</a>
+            <a href="shop-servlet"> <i class="fas fa-angle-right"></i> shop</a>
+            <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
+         </div>
+         <div class="box">
+            <h3>extra links</h3>
+            <a href="cart.jsp"> <i class="fas fa-angle-right"></i> cart</a>
+            <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
+            <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>
+         </div>
+         <div class="box">
+            <h3>contact info</h3>
+            <p> <i class="fas fa-phone"></i> +03-111-2222 </p>
+            <p> <i class="fas fa-phone"></i> +03-222-3333 </p>
+            <p> <i class="fas fa-envelope"></i> jommakan@gmail.com </p>
+            <p> <i class="fas fa-map-marker-alt"></i> Penang, Malaysia - 10150 </p>
+         </div>
+         <div class="box">
+            <h3>follow us</h3>
+            <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+            <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+            <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+            <a href="#"> <i class="fab fa-tiktok"></i> tiktok </a>
+         </div>
+      </section>
+      <p class="credit"> &copy; CAT201 Project 2024 by <span>Team YumYum</span> | Jom Makan </p>
+   </footer>
 
  <script src="js/script.js"></script>
 
