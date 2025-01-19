@@ -4,25 +4,21 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
+<!-- Head section remains the same -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Product</title>
-
-    <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-
-    <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
 
+<!-- Header section remains the same -->
 <header class="header">
-    <!-- Header content (unchanged) -->
+    <!-- ... header content ... -->
 </header>
-
 
 <section class="view-product">
     <h1 class="title">Product Details</h1>
@@ -32,40 +28,70 @@
         ProductProfile product = null;
         if (productId != null && !productId.isEmpty()) {
             product = ProductProfileManager.getProductById(productId);
+            // Set the product in page scope for JSTL access
+            pageContext.setAttribute("product", product);
         }
     %>
-aass
-    
+
     <c:if test="${not empty product}">
         <div class="box-container">
             <div class="box" data-category="${product.category}">
-                <div class="price">RM<span>5</span>/-</div>
-                <a href="viewpage.jsp?id=${product.id}" class="fas fa-eye"></a>
+                <div class="price">${product.price}</div>
                 <img src="${product.image}" alt="${product.name}">
                 <div class="name">${product.name}</div>
-                <p class="origin"><strong>Origin:</strong> ${product.origin}</p>
-                <p class="description">${product.description}</p>
+                <h1 class="origin">${product.origin}</h1>
+                <h2 class="description">${product.description}</h2>
                 <label>
                     <input type="number" min="1" value="1" class="qty">
                 </label>
                 <a href="addToCartServlet?id=${product.id}" class="btn">Add to Cart</a>
+                <a href="shop-servlet" class="option-btn">Back to Shop</a>
             </div>
         </div>
     </c:if>
     <c:if test="${empty product}">
-        <p>No Product is available!</p>
+        <p class="empty">No Product is available!</p>
+        <div class="buttons">
+            <a href="shop-servlet" class="option-btn">Back to Shop</a>
+        </div>
     </c:if>
 </section>
 
 <footer class="footer">
-    <!-- Footer content (unchanged) -->
+    <section class="box-container">
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="home-servlet"> <i class="fas fa-angle-right"></i> home</a>
+            <a href="shop-servlet"> <i class="fas fa-angle-right"></i> shop</a>
+            <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
+            <a href="contact.html"> <i class="fas fa-angle-right"></i> contact</a>
+        </div>
+        <div class="box">
+            <h3>extra links</h3>
+            <a href="cart.html"> <i class="fas fa-angle-right"></i> cart</a>
+            <%--         <a href="wishlist.jsp"> <i class="fas fa-angle-right"></i> wishlist</a>--%>
+            <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
+            <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>
+        </div>
+        <div class="box">
+            <h3>contact info</h3>
+            <p> <i class="fas fa-phone"></i> +03-111-2222 </p>
+            <p> <i class="fas fa-phone"></i> +03-222-3333 </p>
+            <p> <i class="fas fa-envelope"></i> jommakan@gmail.com </p>
+            <p> <i class="fas fa-map-marker-alt"></i> Penang, Malaysia - 10150 </p>
+        </div>
+        <div class="box">
+            <h3>follow us</h3>
+            <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+            <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+            <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+            <a href="#"> <i class="fab fa-tiktok"></i> tiktok </a>
+        </div>
+    </section>
+    <p class="credit"> &copy; CAT201 Project 2024 by <span>Team YumYum</span> | Jom Makan </p>
 </footer>
 
 <script src="js/script.js"></script>
-
-<style>
-    /* CSS styles (unchanged) */
-</style>
 
 </body>
 </html>

@@ -62,7 +62,7 @@
       <c:forEach var="product" items="${categoryProducts}">
          <div class="box">
             <div class="price">${product.price}</div>
-            <button class="fas fa-eye quick-view-btn" data-product="${product.description}"></button>
+            <a href="viewpage.jsp?id=${product.id}" class="fas fa-eye"></a>
             <img src="${product.image}" alt="${product.name}">
             <div class="name">${product.name}</div>
             <div class="details">

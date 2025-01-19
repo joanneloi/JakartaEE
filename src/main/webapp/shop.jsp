@@ -34,11 +34,11 @@
          <div id="menu-btn" class="fas fa-bars"></div>
          <div id="user-btn" class="fas fa-user"></div>
          <a href="search_page.html" class="fas fa-search"></a>
-         <a href="wishlist.jsp"><i class="fas fa-heart"></i><span>(0)</span></a>
+<%--         <a href="wishlist.jsp"><i class="fas fa-heart"></i><span>(0)</span></a>--%>
          <a href="cart.html"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
       </div>
       <div class="profile">
-         <img src="<%= session.getAttribute("userImage") != null ? session.getAttribute("userImage") : "../uploaded_img/default.png" %>" alt="User Image">
+         <img src="<%= session.getAttribute("userImage") != null ? session.getAttribute("userImage") : "uploaded_img/default.png" %>" alt="User Image">
          <p><%= session.getAttribute("userName") != null ? session.getAttribute("userName") : "Guest" %></p>
          <a href="user_profile_update.jsp" class="btn">update profile</a>
          <a href="login.jsp" class="delete-btn">logout</a>
@@ -64,7 +64,7 @@
       <div class="box-container">
          <c:forEach var="product" items="${products}">
             <div class="box" data-category="${product.category}">
-               <div class="price">RM<span>5</span>/-</div>
+               <div class="price">${product.price}</div>
                <a href="viewpage.jsp?id=${product.id}" class="fas fa-eye"></a>
                <img src="${product.image}" alt="${product.name}">
                <div class="name">${product.name}</div>
@@ -79,31 +79,6 @@
          </c:if>
       </div>
    </section>
-
-   <%--   <section class="product-details">--%>
-   <%--      <h1 class="title">Product Details</h1>--%>
-   <%--      <div class="box">--%>
-   <%--         <%--%>
-   <%--            // Retrieve the selected product from the request attribute--%>
-   <%--            org.example.project.ProductProfile product =--%>
-   <%--                    (org.example.project.ProductProfile) request.getAttribute("product");--%>
-
-   <%--            if (product != null) {--%>
-   <%--         %>--%>
-   <%--         <img src="<%= product.getImage() %>" alt="<%= product.getName() %>">--%>
-   <%--         <h3><%= product.getName() %></h3>--%>
-   <%--         <p><%= product.getDescription() %></p>--%>
-   <%--         <span><%= product.getPrice() %></span>--%>
-   <%--         <a href="addToCartServlet?id=<%= product.getId() %>" class="btn">Add to Cart</a>--%>
-   <%--         <%--%>
-   <%--         } else {--%>
-   <%--         %>--%>
-   <%--         <p>No product found. Please select a valid product.</p>--%>
-   <%--         <%--%>
-   <%--            }--%>
-   <%--         %>--%>
-   <%--      </div>--%>
-   <%--   </section>--%>
 </form>
 
 
@@ -111,15 +86,15 @@
    <section class="box-container">
       <div class="box">
          <h3>quick links</h3>
-         <a href="home.jsp"> <i class="fas fa-angle-right"></i> home</a>
-         <a href="shop.jsp"> <i class="fas fa-angle-right"></i> shop</a>
+         <a href="home-servlet"> <i class="fas fa-angle-right"></i> home</a>
+         <a href="shop-servlet"> <i class="fas fa-angle-right"></i> shop</a>
          <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
          <a href="contact.html"> <i class="fas fa-angle-right"></i> contact</a>
       </div>
       <div class="box">
          <h3>extra links</h3>
          <a href="cart.html"> <i class="fas fa-angle-right"></i> cart</a>
-         <a href="wishlist.jsp"> <i class="fas fa-angle-right"></i> wishlist</a>
+<%--         <a href="wishlist.jsp"> <i class="fas fa-angle-right"></i> wishlist</a>--%>
          <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
          <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>
       </div>

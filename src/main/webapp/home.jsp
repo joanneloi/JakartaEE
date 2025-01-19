@@ -67,7 +67,7 @@
          <h3>Aromatic Spices</h3>
          <p>Enhance your dishes with the irresistible fragrance of aromatic spices like cinnamon, cardamom, and cloves.</p>
          <!-- jump to category page when click on 'See More' button. -->
-         <a href="shop.jsp" class="btn">See More</a>
+         <a href="category-servlet?category=spices" class="btn">See More</a>
       </div>
       <div class="box">
          <!-- CATEGORY 2 - SPICY -->
@@ -75,30 +75,22 @@
          <h3>Hot and Spicy</h3>
          <p>Turn up the heat with our selection of chilies, pepper, and ginger.</p>
          <!-- jump to category page when click on 'Shop Now' button. -->
-         <a href="shop.jsp" class="btn">Shop Now</a>
+         <a href="category-servlet?category=spicy" class="btn">Shop Now</a>
       </div>
       <div class="box">
          <!-- CATEGORY 3 - NUT -->
          <img src="images/cat3.png" alt="">
          <h3>Sweet and Nutty</h3>
          <p>Indulge in the warm, comforting flavors of nutmeg, fennel, and anise.</p>
-         <a href="shop.jsp" class="btn">See More</a>
+         <a href="category-servlet?category=nutty" class="btn">See More</a>
       </div>
       <div class="box">
          <!-- CATEGORY 4 - HERBAL -->
          <img src="images/cat4.png" alt="">
          <h3>Herbal</h3>
          <p>Discover the natural goodness of herbal flavors with lemongrass, pandan, and curry leaves.</p>
-         <a href="shop.jsp" class="btn">Shop Now</a>
+         <a href="category-servlet?category=herbal" class="btn">Shop Now</a>
       </div>
-   </div>
-</section>
-
-<!-- WHEN NEW PRODUCT IS ADDED BY ADMIN... -->
-<section class="products">
-   <h1 class="title">latest products</h1>
-   <div class="box-container">
-      <p class="empty">No products added yet!</p>
    </div>
 </section>
 
@@ -106,8 +98,8 @@
    <section class="box-container">
       <div class="box">
          <h3>quick links</h3>
-         <a href="home.jsp"> <i class="fas fa-angle-right"></i> home</a>
-         <a href="shop.jsp"> <i class="fas fa-angle-right"></i> shop</a>
+         <a href="home-servlet"> <i class="fas fa-angle-right"></i> home</a>
+         <a href="shop-servlet"> <i class="fas fa-angle-right"></i> shop</a>
          <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
          <a href="html/contact.html"> <i class="fas fa-angle-right"></i> contact</a>
       </div>
