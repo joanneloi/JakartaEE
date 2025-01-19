@@ -42,8 +42,8 @@
       <a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
     </div>
     <div class="profile">
-      <img src="uploaded_img/default.png" alt="Default Image">
-      <p>Guest</p>
+      <img src="<%= session.getAttribute("userImage") != null ? session.getAttribute("userImage") : "../uploaded_img/default.png" %>" alt="User Image">
+      <p><%= session.getAttribute("userName") != null ? session.getAttribute("userName") : "Guest" %></p>
       <a href="user_profile_update.jsp" class="btn">update profile</a>
       <a href="login.jsp" class="delete-btn">logout</a>
       <div class="flex-btn">

@@ -35,6 +35,10 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("userName", user.getName());
             session.setAttribute("userImage", "uploads/" + user.getImagePath());
             response.sendRedirect("home.jsp");
+            response.sendRedirect("about.jsp");
+            response.sendRedirect("cart.jsp");
+            response.sendRedirect("catogory.jsp");
+            response.sendRedirect("shop.jsp");
         } else {
             System.out.println("unsuccessful login");
             request.setAttribute("errorMessage", ERROR_INVALID_CREDENTIALS);
