@@ -26,6 +26,7 @@ public class UserProfile {
     }
 
     public String getImagePath() {
+        System.out.println(imagePath);
         return imagePath;
     }
 

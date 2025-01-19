@@ -16,8 +16,8 @@ import java.nio.file.Paths;
 @WebServlet(name = "RegisterServlet", value = "/register-servlet")
 @MultipartConfig
 public class RegisterServlet extends HttpServlet {
-    private static final String UPLOAD_DIR = "uploads";
-    private static final String CSV_FILE = "csv_file/user_profiles.csv";
+    private static final String UPLOAD_DIR = "uploads";  // For images and CSV file
+    private static final String CSV_FILE = "user_profile.csv";  // CSV file name
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
@@ -32,28 +32,46 @@ public class RegisterServlet extends HttpServlet {
         }
 
         // Validate uploaded image
-        String contentType = request.getPart("image").getContentType();
-        if (!contentType.equals("image/jpeg") && !contentType.equals("image/png")) {
+        var imagePart = request.getPart("image");
+        if (imagePart == null || (!imagePart.getContentType().equals("image/jpeg") && !imagePart.getContentType().equals("image/png"))) {
             response.getWriter().write("Invalid image type! Please upload a JPG or PNG image.");
             return;
         }
 
-        // Save uploaded image
+        // Get the submitted file name and extract the extension
+        String fileName = Paths.get(imagePart.getSubmittedFileName()).getFileName().toString();
+        String extension = fileName.substring(fileName.lastIndexOf("."));
+
+        // Rename the file using the email
+        String newFileName = email + extension;
+
+        // Get the path to store the uploaded image
         String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIR;
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
             uploadDir.mkdir();
         }
 
-        String fileName = Paths.get(request.getPart("image").getSubmittedFileName()).getFileName().toString();
-        String filePath = uploadPath + File.separator + fileName;
-        request.getPart("image").write(filePath);
+        // Save the image with the new name
+        String filePath = uploadPath + File.separator + newFileName;
+        imagePart.write(filePath);
+
+        // Define path for the CSV file (outside of resources)
+        String csvFilePath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIR + File.separator + CSV_FILE;
+        System.out.println("CSV File Path: " + csvFilePath);  // Debugging
+
+        // Ensure the CSV file exists
+        File csvFile = new File(csvFilePath);
+        if (!csvFile.exists()) {
+            csvFile.createNewFile();  // Create the file if it doesn't exist
+        }
 
         // Write user profile to CSV
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(CSV_FILE, true))) {
-            String csvLine = email + "," + name + "," + password + "," + fileName;
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(csvFile, true))) {
+            String csvLine = email + "," + name + "," + password + "," + newFileName;
             writer.write(csvLine);
             writer.newLine();
+            writer.flush();  // Ensure data is written
         } catch (IOException e) {
             e.printStackTrace();
             response.getWriter().write("An error occurred while saving user profile.");

@@ -34,13 +34,13 @@
          <div id="menu-btn" class="fas fa-bars"></div>
          <div id="user-btn" class="fas fa-user"></div>
          <a href="search_page.html" class="fas fa-search"></a>
-         <a href="wishlist.html"><i class="fas fa-heart"></i><span>(0)</span></a>
+         <a href="wishlist.jsp"><i class="fas fa-heart"></i><span>(0)</span></a>
          <a href="cart.html"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
       </div>
       <div class="profile">
-         <img src="uploaded_img/default.png" alt="">
-         <p>Guest</p>
-         <a href="user_profile_update.html" class="btn">update profile</a>
+         <img src="<%= session.getAttribute("userImage") != null ? session.getAttribute("userImage") : "../uploaded_img/default.png" %>" alt="User Image">
+         <p><%= session.getAttribute("userName") != null ? session.getAttribute("userName") : "Guest" %></p>
+         <a href="user_profile_update.jsp" class="btn">update profile</a>
          <a href="login.jsp" class="delete-btn">logout</a>
          <div class="flex-btn">
             <a href="login.jsp" class="option-btn">login</a>
@@ -63,16 +63,19 @@
    <h1 class="title">Latest Products</h1>
    <div class="box-container">
       <c:forEach var="product" items="${products}">
-         <div class="box">
+         <div class="box" data-category="${product.category}">
+            <div class="price">RM<span>5</span>/-</div>
+            <button class="fas fa-eye quick-view-btn" data-product="${product.description}"></button>
             <img src="${product.image}" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <p>${product.description}</p>
-            <span>${product.price}</span>
+            <div class="name">${product.name}</div>
+            <label>
+               <input type="number" min="1" value="1" class="qty">
+            </label>
             <a href="addToCartServlet?id=${product.id}" class="btn">Add to Cart</a>
          </div>
       </c:forEach>
-      <c:if test="${not empty products}">
-         <p>Products list is available!</p>
+      <c:if test="${empty products}">
+         <p>No Product is available!</p>
       </c:if>
    </div>
 </section>

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,25 +15,25 @@
    <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body>
 
+<body>
 <header class="header">
 
    <div class="flex">
       <a href="html/admin_page.html" class="logo">Jom Makan<span>.</span></a>
       <nav class="navbar">
          <a href="home.jsp">home</a>
-         <a href="html/shop.html">shop</a>
-         <a href="html/orders.html">orders</a>
-         <a href="html/about.html">about</a>
-         <a href="html/contact.html">contact</a>
+         <a href="shop-servlet">shop</a>
+         <a href="orders.html">orders</a>
+         <a href="about.jsp">about</a>
+         <a href="contact.html">contact</a>
       </nav>
       <div class="icons">
          <div id="menu-btn" class="fas fa-bars"></div>
          <div id="user-btn" class="fas fa-user"></div>
-         <a href="html/search_page.html" class="fas fa-search"></a>
-         <a href="html/wishlist.html"><i class="fas fa-heart"></i><span>(0)</span></a>
-         <a href="html/cart.html"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
+         <a href="search_page.html" class="fas fa-search"></a>
+         <a href="wishlist.jsp"><i class="fas fa-heart"></i><span>(0)</span></a>
+         <a href="cart.html"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
       </div>
       <div class="profile">
          <img src="<%= session.getAttribute("userImage") != null ? session.getAttribute("userImage") : "../uploaded_img/default.png" %>" alt="User Image">
@@ -45,7 +46,6 @@
          </div>
       </div>
    </div>
-   </div>
 </header>
 
 <div class="home-bg">
@@ -54,7 +54,7 @@
          <span>Jom Makan, Malaysia's Taste</span>
          <h3>Spice Up Your Life with Malaysian Flavors</h3>
          <p>Discover the natural essence of Malaysian cuisine with our wide selection of fresh, organic spices and ingredients.</p>
-         <a href="html/about.html" class="btn">about us</a>
+         <a href="about.jsp" class="btn">about us</a>
       </div>
    </section>
 </div>
@@ -96,28 +96,42 @@
 </section>
 
 <!-- WHEN NEW PRODUCT IS ADDED BY ADMIN... -->
-<section class="products">
-   <h1 class="title">latest products</h1>
-   <div class="box-container">
-      <p class="empty">No products added yet!</p>
-   </div>
-</section>
+<%--   <section class="products">--%>
+<%--      <h1 class="title">Latest Products</h1>--%>
+<%--      <div class="box-container">--%>
+<%--         <c:forEach var="product" items="${products}">--%>
+<%--            <div class="box" data-category="${product.category}">--%>
+<%--               <div class="price">RM<span>5</span>/-</div>--%>
+<%--               <button class="fas fa-eye quick-view-btn" data-product="${product.description}"></button>--%>
+<%--               <img src="${product.image}" alt="${product.name}">--%>
+<%--               <div class="name">${product.name}</div>--%>
+<%--               <label>--%>
+<%--                  <input type="number" min="1" value="1" class="qty">--%>
+<%--               </label>--%>
+<%--               <a href="addToCartServlet?id=${product.id}" class="btn">Add to Cart</a>--%>
+<%--            </div>--%>
+<%--         </c:forEach>--%>
+<%--         <c:if test="${empty products}">--%>
+<%--            <p>No Product is available!</p>--%>
+<%--         </c:if>--%>
+<%--      </div>--%>
+<%--   </section>--%>
 
 <footer class="footer">
    <section class="box-container">
       <div class="box">
          <h3>quick links</h3>
          <a href="home.jsp"> <i class="fas fa-angle-right"></i> home</a>
-         <a href="html/shop.html"> <i class="fas fa-angle-right"></i> shop</a>
-         <a href="html/about.html"> <i class="fas fa-angle-right"></i> about</a>
-         <a href="html/contact.html"> <i class="fas fa-angle-right"></i> contact</a>
+         <a href="shop.jsp"> <i class="fas fa-angle-right"></i> shop</a>
+         <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
+         <a href="contact.html"> <i class="fas fa-angle-right"></i> contact</a>
       </div>
       <div class="box">
          <h3>extra links</h3>
-         <a href="html/cart.html"> <i class="fas fa-angle-right"></i> cart</a>
-         <a href="html/wishlist.html"> <i class="fas fa-angle-right"></i> wishlist</a>
-         <a href="html/login.html"> <i class="fas fa-angle-right"></i> login</a>
-         <a href="html/register.html"> <i class="fas fa-angle-right"></i> register</a>
+         <a href="cart.html"> <i class="fas fa-angle-right"></i> cart</a>
+         <a href="wishlist.jsp"> <i class="fas fa-angle-right"></i> wishlist</a>
+         <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
+         <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>
       </div>
       <div class="box">
          <h3>contact info</h3>
@@ -141,3 +155,4 @@
 
 </body>
 </html>
+

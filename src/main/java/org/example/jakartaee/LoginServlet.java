@@ -33,11 +33,8 @@ public class LoginServlet extends HttpServlet {
         if (user != null && user.getPassword().equals(password)) {
             HttpSession session = request.getSession();
             session.setAttribute("userName", user.getName());
-            session.setAttribute("userImage", user.getImagePath());
-            System.out.println("User Name: " + session.getAttribute("userName"));
-            System.out.println("User Image: " + session.getAttribute("userImage"));
+            session.setAttribute("userImage", "uploads/" + user.getImagePath());
             response.sendRedirect("home.jsp");
-            System.out.println("Redirecting to home.jsp");
         } else {
             System.out.println("unsuccessful login");
             request.setAttribute("errorMessage", ERROR_INVALID_CREDENTIALS);
