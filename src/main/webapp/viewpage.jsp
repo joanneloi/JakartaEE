@@ -15,9 +15,35 @@
 </head>
 <body>
 
-<!-- Header section remains the same -->
 <header class="header">
-    <!-- ... header content ... -->
+
+    <div class="flex">
+        <a href="admin_page.html" class="logo">Jom Makan<span>.</span></a>
+        <nav class="navbar">
+            <a href="home.jsp">home</a>
+            <a href="shop-servlet">shop</a>
+            <a href="orders.jsp">orders</a>
+            <a href="about.jsp">about</a>
+            <a href="contact.html">contact</a>
+        </nav>
+        <div class="icons">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div id="user-btn" class="fas fa-user"></div>
+            <a href="search_page.html" class="fas fa-search"></a>
+            <%--         <a href="wishlist.jsp"><i class="fas fa-heart"></i><span>(0)</span></a>--%>
+            <a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span>${not empty cart ? cart.itemCount : 0}</span></a>
+        </div>
+        <div class="profile">
+            <img src="<%= session.getAttribute("userImage") != null ? session.getAttribute("userImage") : "uploaded_img/default.png" %>" alt="User Image">
+            <p><%= session.getAttribute("userName") != null ? session.getAttribute("userName") : "Guest" %></p>
+            <a href="user_profile_update.jsp" class="btn">update profile</a>
+            <a href="login.jsp" class="delete-btn">logout</a>
+            <div class="flex-btn">
+                <a href="login.jsp" class="option-btn">login</a>
+                <a href="register.jsp" class="option-btn">register</a>
+            </div>
+        </div>
+    </div>
 </header>
 
 <section class="view-product">
@@ -63,12 +89,13 @@
             <h3>quick links</h3>
             <a href="home-servlet"> <i class="fas fa-angle-right"></i> home</a>
             <a href="shop-servlet"> <i class="fas fa-angle-right"></i> shop</a>
+            <a href="order.jsp">orders</a>
             <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
             <a href="contact.html"> <i class="fas fa-angle-right"></i> contact</a>
         </div>
         <div class="box">
             <h3>extra links</h3>
-            <a href="cart.html"> <i class="fas fa-angle-right"></i> cart</a>
+            <a href="cart.jsp"> <i class="fas fa-angle-right"></i> cart</a>
             <%--         <a href="wishlist.jsp"> <i class="fas fa-angle-right"></i> wishlist</a>--%>
             <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
             <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>

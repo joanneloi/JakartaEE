@@ -12,10 +12,8 @@
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
-
 <header class="header">
 
    <div class="flex">
@@ -23,7 +21,7 @@
       <nav class="navbar">
          <a href="home.jsp">home</a>
          <a href="shop-servlet">shop</a>
-         <a href="html/orders.html">orders</a>
+         <a href="order.jsp">orders</a>
          <a href="about.jsp">about</a>
          <a href="html/contact.html">contact</a>
       </nav>
@@ -31,13 +29,12 @@
          <div id="menu-btn" class="fas fa-bars"></div>
          <div id="user-btn" class="fas fa-user"></div>
          <a href="html/search_page.html" class="fas fa-search"></a>
-         <a href="html/wishlist.html"><i class="fas fa-heart"></i><span>(0)</span></a>
-         <a href="html/cart.html"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
+         <a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span>${not empty cart ? cart.itemCount : 0}</span></a>
       </div>
       <div class="profile">
          <img src="uploaded_img" alt="">
          <p>Guest</p>
-         <a href="html/user_profile_update.html" class="btn">update profile</a>
+         <a href="user_profile_update.jsp" class="btn">update profile</a>
          <a href="login.jsp" class="delete-btn">logout</a>
          <div class="flex-btn">
             <a href="login.jsp" class="option-btn">login</a>
