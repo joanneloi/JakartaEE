@@ -1,4 +1,6 @@
-<%--@elvariable id="product" type="jakarta"--%>
+<!-- <%--@elvariable id="product" type="jakarta"--%> -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<%@ taglib prefix="c" uri="jakarta.tags.core" %>--%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,26 +49,53 @@
       </div>
    </div>
 </header>
-
 <form action="shop-servlet" method="GET">
+<section class="products">
+   <h1 class="title">Latest Products</h1>
+   <div class="box-container">
+      <c:forEach var="product" items="${products}">
+         <div class="box">
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <span>${product.price}</span>
+            <a href="addToCartServlet?id=${product.id}" class="btn">Add to Cart</a>
+         </div>
+      </c:forEach>
+      <c:if test="${not empty products}">
+         <p>Products list is available!</p>
+      </c:if>
 
-   <section class="products">
-      <h1 class="title">Latest Products</h1>
-      <div class="box-container">
-         <c:forEach var="product" items="${products}">
-            <div class="box">
-               <img src="${product.image}" alt="${product.name}">
-               <h3>${product.name}</h3>
-               <p>${product.description}</p>
-               <span>${product.price}</span>
-               <a href="addToCartServlet?id=${product.id}" class="btn">Add to Cart</a>
-            </div>
-         </c:forEach>
 
-      </div>
-   </section>
+   </div>
+</section>
 
+<%--   <section class="product-details">--%>
+<%--      <h1 class="title">Product Details</h1>--%>
+<%--      <div class="box">--%>
+<%--         <%--%>
+<%--            // Retrieve the selected product from the request attribute--%>
+<%--            org.example.project.ProductProfile product =--%>
+<%--                    (org.example.project.ProductProfile) request.getAttribute("product");--%>
+
+<%--            if (product != null) {--%>
+<%--         %>--%>
+<%--         <img src="<%= product.getImage() %>" alt="<%= product.getName() %>">--%>
+<%--         <h3><%= product.getName() %></h3>--%>
+<%--         <p><%= product.getDescription() %></p>--%>
+<%--         <span><%= product.getPrice() %></span>--%>
+<%--         <a href="addToCartServlet?id=<%= product.getId() %>" class="btn">Add to Cart</a>--%>
+<%--         <%--%>
+<%--         } else {--%>
+<%--         %>--%>
+<%--         <p>No product found. Please select a valid product.</p>--%>
+<%--         <%--%>
+<%--            }--%>
+<%--         %>--%>
+<%--      </div>--%>
+<%--   </section>--%>
 </form>
+
 
 <footer class="footer">
    <section class="box-container">
@@ -80,7 +109,7 @@
       <div class="box">
          <h3>extra links</h3>
          <a href="cart.html"> <i class="fas fa-angle-right"></i> cart</a>
-         <a href="wishlist.html"> <i class="fas fa-angle-right"></i> wishlist</a>
+         <a href="wishlist.jsp"> <i class="fas fa-angle-right"></i> wishlist</a>
          <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
          <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>
       </div>

@@ -9,6 +9,13 @@ public class DisplayProducts {
 
             // Load products using ProductProfileManager
             Collection<ProductProfile> products = ProductProfileManager.getAllProducts();
+            ProductProfile selectedProduct = ProductProfileManager.getProductById("1");
+            System.out.printf("%-10s %-20s %-10s %-15s %-15s\n",
+                    selectedProduct.getId(),
+                    selectedProduct.getName(),
+                    selectedProduct.getPrice(),
+                    selectedProduct.getCategory(),
+                    selectedProduct.getOrigin());
 
             if (products.isEmpty()) {
                 System.out.println("No products found.");

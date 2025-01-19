@@ -22,7 +22,7 @@
       <a href="html/admin_page.html" class="logo">Jom Makan<span>.</span></a>
       <nav class="navbar">
          <a href="home.jsp">home</a>
-         <a href="shop.jsp">shop</a>
+         <a href="shop-servlet">shop</a>
          <a href="html/orders.html">orders</a>
          <a href="about.jsp">about</a>
          <a href="html/contact.html">contact</a>
