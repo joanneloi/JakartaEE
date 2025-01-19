@@ -22,7 +22,7 @@
    <div class="flex">
       <a href="html/admin_page.html" class="logo">Jom Makan<span>.</span></a>
       <nav class="navbar">
-         <a href="home.jsp">home</a>
+         <a href="home-servlet">home</a>
          <a href="shop-servlet">shop</a>
          <a href="orders.html">orders</a>
          <a href="about.jsp">about</a>
@@ -33,7 +33,7 @@
          <div id="user-btn" class="fas fa-user"></div>
          <a href="search_page.html" class="fas fa-search"></a>
          <a href="wishlist.jsp"><i class="fas fa-heart"></i><span>(0)</span></a>
-         <a href="cart.html"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
+         <a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
       </div>
       <div class="profile">
          <img src="<%= session.getAttribute("userImage") != null ? session.getAttribute("userImage") : "../uploaded_img/default.png" %>" alt="User Image">
@@ -96,39 +96,41 @@
 </section>
 
 <!-- WHEN NEW PRODUCT IS ADDED BY ADMIN... -->
-<%--   <section class="products">--%>
-<%--      <h1 class="title">Latest Products</h1>--%>
-<%--      <div class="box-container">--%>
-<%--         <c:forEach var="product" items="${products}">--%>
-<%--            <div class="box" data-category="${product.category}">--%>
-<%--               <div class="price">RM<span>5</span>/-</div>--%>
-<%--               <button class="fas fa-eye quick-view-btn" data-product="${product.description}"></button>--%>
-<%--               <img src="${product.image}" alt="${product.name}">--%>
-<%--               <div class="name">${product.name}</div>--%>
-<%--               <label>--%>
-<%--                  <input type="number" min="1" value="1" class="qty">--%>
-<%--               </label>--%>
-<%--               <a href="addToCartServlet?id=${product.id}" class="btn">Add to Cart</a>--%>
-<%--            </div>--%>
-<%--         </c:forEach>--%>
-<%--         <c:if test="${empty products}">--%>
-<%--            <p>No Product is available!</p>--%>
-<%--         </c:if>--%>
-<%--      </div>--%>
-<%--   </section>--%>
+<form action="home-servlet" method="GET">
+   <section class="products">
+      <h1 class="title">Latest Products</h1>
+      <div class="box-container">
+         <c:forEach var="product" items="${products}">
+            <div class="box" data-category="${product.category}">
+               <div class="price">RM<span>5</span>/-</div>
+               <button class="fas fa-eye quick-view-btn" data-product="${product.description}"></button>
+               <img src="${product.image}" alt="${product.name}">
+               <div class="name">${product.name}</div>
+               <label>
+                  <input type="number" min="1" value="1" class="qty">
+               </label>
+               <a href="addToCartServlet?id=${product.id}" class="btn">Add to Cart</a>
+            </div>
+         </c:forEach>
+         <c:if test="${empty products}">
+            <p>No Product is available!</p>
+         </c:if>
+      </div>
+   </section>
+</form>
 
 <footer class="footer">
    <section class="box-container">
       <div class="box">
          <h3>quick links</h3>
-         <a href="home.jsp"> <i class="fas fa-angle-right"></i> home</a>
+         <a href="home-servlet"> <i class="fas fa-angle-right"></i> home</a>
          <a href="shop.jsp"> <i class="fas fa-angle-right"></i> shop</a>
          <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
          <a href="contact.html"> <i class="fas fa-angle-right"></i> contact</a>
       </div>
       <div class="box">
          <h3>extra links</h3>
-         <a href="cart.html"> <i class="fas fa-angle-right"></i> cart</a>
+         <a href="cart.jsp"> <i class="fas fa-angle-right"></i> cart</a>
          <a href="wishlist.jsp"> <i class="fas fa-angle-right"></i> wishlist</a>
          <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
          <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>

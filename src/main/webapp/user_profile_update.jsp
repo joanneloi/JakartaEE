@@ -20,7 +20,7 @@
    <div class="flex">
       <a href="html/admin_page.html" class="logo">Jom Makan<span>.</span></a>
       <nav class="navbar">
-        <a href="home.jsp">home</a>
+        <a href="home-servlet">home</a>
         <a href="html/shop.html">shop</a>
         <a href="html/orders.html">orders</a>
         <a href="about.jsp">about</a>
@@ -71,7 +71,7 @@
       </div>
       <div class="flex-btn">
          <input type="submit" class="btn" value="update profile" name="update_profile">
-         <a href="home.jsp" class="option-btn">go back</a>
+         <a href="home-servlet" class="option-btn">go back</a>
       </div>
    </form>
 
@@ -81,7 +81,7 @@
     <section class="box-container">
        <div class="box">
           <h3>quick links</h3>
-          <a href="home.jsp"> <i class="fas fa-angle-right"></i> home</a>
+          <a href="home-servlet"> <i class="fas fa-angle-right"></i> home</a>
           <a href="html/shop.html"> <i class="fas fa-angle-right"></i> shop</a>
           <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
           <a href="html/contact.html"> <i class="fas fa-angle-right"></i> contact</a>

@@ -52,6 +52,28 @@
    </div>
 </section>
 
+<section class="products">
+   <h1 class="title">Latest Products</h1>
+   <div class="box-container">
+      <c:forEach var="product" items="${products}">
+         <div class="box" data-category="${product.category}">
+            <div class="price">RM<span>5</span>/-</div>
+            <button class="fas fa-eye quick-view-btn" data-product="${product.description}"></button>
+            <img src="${product.image}" alt="${product.name}">
+            <div class="name">${product.name}</div>
+            <label>
+               <input type="number" min="1" value="1" class="qty">
+            </label>
+            <!-- Inside your product display loop -->
+            <a href="addToCartServlet?id=${product.id}&quantity=${param.qty}" class="btn">Add to Cart</a>
+         </div>
+      </c:forEach>
+      <c:if test="${empty products}">
+         <p>No Product is available!</p>
+      </c:if>
+   </div>
+</section>
+
 <footer class="footer">
     <section class="box-container">
        <div class="box">

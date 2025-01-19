@@ -21,7 +21,7 @@ public class HomeServlet extends HttpServlet {
         System.out.println("Products retrieved: " + (products != null ? products.size() : 0)); // Debugging
 
         request.setAttribute("products", products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("shop.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
         dispatcher.forward(request, response);
     }
 
