@@ -1,19 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: joanneloi
-  Date: 19/01/2025
-  Time: 2:41 pm
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${category} - Jom Makan</title>
+  <title>category</title>
 
   <!-- font awesome cdn link  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -25,10 +18,11 @@
 <body>
 
 <header class="header">
+
   <div class="flex">
     <a href="admin_page.html" class="logo">Jom Makan<span>.</span></a>
     <nav class="navbar">
-      <a href="home-servlet">home</a>
+      <a href="home.jsp">home</a>
       <a href="shop-servlet">shop</a>
       <a href="orders.html">orders</a>
       <a href="about.jsp">about</a>
@@ -39,7 +33,7 @@
       <div id="user-btn" class="fas fa-user"></div>
       <a href="search_page.html" class="fas fa-search"></a>
       <a href="wishlist.jsp"><i class="fas fa-heart"></i><span>(0)</span></a>
-      <a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
+      <a href="cart.html"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
     </div>
     <div class="profile">
       <img src="<%= session.getAttribute("userImage") != null ? session.getAttribute("userImage") : "../uploaded_img/default.png" %>" alt="User Image">
@@ -54,23 +48,35 @@
   </div>
 </header>
 
+<!-- SHOW THE PRODUCT BY CATEGORY -->
+<section class="p-category">
+  <a href="?category=spices" class="${param.category == 'spices' ? 'active' : ''}">Aromatic Spices</a>
+  <a href="?category=nutty" class="${param.category == 'nutty' ? 'active' : ''}">Sweet and Nutty</a>
+  <a href="?category=herbal" class="${param.category == 'herbal' ? 'active' : ''}">Herbal</a>
+  <a href="?category=spicy" class="${param.category == 'spicy' ? 'active' : ''}">Hot and Spicy</a>
+</section>
+
 <section class="products">
-  <h1 class="title">${category} Products</h1>
+  <h1 class="title">Products in ${param.category}</h1>
   <div class="box-container">
     <c:forEach var="product" items="${categoryProducts}">
-      <div class="box" data-category="${product.category}">
-        <div class="price">RM<span>${product.price}</span>/-</div>
+      <div class="box">
+        <div class="price">${product.price}</div>
         <button class="fas fa-eye quick-view-btn" data-product="${product.description}"></button>
         <img src="${product.image}" alt="${product.name}">
         <div class="name">${product.name}</div>
+        <div class="details">
+          <p class="origin">Origin: ${product.origin}</p>
+          <p class="description">${product.description}</p>
+        </div>
         <label>
           <input type="number" min="1" value="1" class="qty">
         </label>
-        <a href="addToCartServlet?id=${product.id}&quantity=${param.qty}" class="btn">Add to Cart</a>
+        <a href="addToCartServlet?id=${product.id}" class="btn">Add to Cart</a>
       </div>
     </c:forEach>
     <c:if test="${empty categoryProducts}">
-      <p>No products available in this category.</p>
+      <p class="empty">No products available in this category!</p>
     </c:if>
   </div>
 </section>
@@ -79,15 +85,15 @@
   <section class="box-container">
     <div class="box">
       <h3>quick links</h3>
-      <a href="home-servlet"> <i class="fas fa-angle-right"></i> home</a>
-      <a href="shop-servlet"> <i class="fas fa-angle-right"></i> shop</a>
+      <a href="home.jsp"> <i class="fas fa-angle-right"></i> home</a>
+      <a href="shop.jsp"> <i class="fas fa-angle-right"></i> shop</a>
       <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
       <a href="contact.html"> <i class="fas fa-angle-right"></i> contact</a>
     </div>
     <div class="box">
       <h3>extra links</h3>
-      <a href="cart.jsp"> <i class="fas fa-angle-right"></i> cart</a>
-      <a href="wishlist.jsp"> <i class="fas fa-angle-right"></i> wishlist</a>
+      <a href="cart.html"> <i class="fas fa-angle-right"></i> cart</a>
+      <a href="wishlist.html"> <i class="fas fa-angle-right"></i> wishlist</a>
       <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
       <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>
     </div>
