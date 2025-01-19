@@ -12,32 +12,29 @@
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
-
 <header class="header">
 
    <div class="flex">
       <a href="html/admin_page.html" class="logo">Jom Makan<span>.</span></a>
       <nav class="navbar">
          <a href="home.jsp">home</a>
-         <a href="html/shop.html">shop</a>
-         <a href="html/orders.html">orders</a>
-         <a href="html/about.html">about</a>
+         <a href="shop-servlet">shop</a>
+         <a href="order.jsp">orders</a>
+         <a href="about.jsp">about</a>
          <a href="html/contact.html">contact</a>
       </nav>
       <div class="icons">
          <div id="menu-btn" class="fas fa-bars"></div>
          <div id="user-btn" class="fas fa-user"></div>
          <a href="html/search_page.html" class="fas fa-search"></a>
-         <a href="html/wishlist.html"><i class="fas fa-heart"></i><span>(0)</span></a>
-         <a href="html/cart.html"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
+         <a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span>${not empty cart ? cart.itemCount : 0}</span></a>
       </div>
       <div class="profile">
-         <img src="../uploaded_img/default.png" alt="">
+         <img src="uploaded_img" alt="">
          <p>Guest</p>
-         <a href="../user_profile_update.html" class="btn">update profile</a>
+         <a href="user_profile_update.jsp" class="btn">update profile</a>
          <a href="login.jsp" class="delete-btn">logout</a>
          <div class="flex-btn">
             <a href="login.jsp" class="option-btn">login</a>
@@ -53,7 +50,7 @@
          <span>Jom Makan, Malaysia's Taste</span>
          <h3>Spice Up Your Life with Malaysian Flavors</h3>
          <p>Discover the natural essence of Malaysian cuisine with our wide selection of fresh, organic spices and ingredients.</p>
-         <a href="html/about.html" class="btn">about us</a>
+         <a href="about.jsp" class="btn">about us</a>
       </div>
    </section>
 </div>
@@ -67,7 +64,7 @@
          <h3>Aromatic Spices</h3>
          <p>Enhance your dishes with the irresistible fragrance of aromatic spices like cinnamon, cardamom, and cloves.</p>
          <!-- jump to category page when click on 'See More' button. -->
-         <a href="html/category.html?category=spices" class="btn">See More</a>
+         <a href="category-servlet?category=spices" class="btn">See More</a>
       </div>
       <div class="box">
          <!-- CATEGORY 2 - SPICY -->
@@ -75,30 +72,22 @@
          <h3>Hot and Spicy</h3>
          <p>Turn up the heat with our selection of chilies, pepper, and ginger.</p>
          <!-- jump to category page when click on 'Shop Now' button. -->
-         <a href="html/category.html?category=spicy" class="btn">Shop Now</a>
+         <a href="category-servlet?category=spicy" class="btn">Shop Now</a>
       </div>
       <div class="box">
          <!-- CATEGORY 3 - NUT -->
          <img src="images/cat3.png" alt="">
          <h3>Sweet and Nutty</h3>
          <p>Indulge in the warm, comforting flavors of nutmeg, fennel, and anise.</p>
-         <a href="html/category.html?category=nutty" class="btn">See More</a>
+         <a href="category-servlet?category=nutty" class="btn">See More</a>
       </div>
       <div class="box">
          <!-- CATEGORY 4 - HERBAL -->
          <img src="images/cat4.png" alt="">
          <h3>Herbal</h3>
          <p>Discover the natural goodness of herbal flavors with lemongrass, pandan, and curry leaves.</p>
-         <a href="html/category.html?category=herbal" class="btn">Shop Now</a>
+         <a href="category-servlet?category=herbal" class="btn">Shop Now</a>
       </div>
-   </div>
-</section>
-
-<!-- WHEN NEW PRODUCT IS ADDED BY ADMIN... -->
-<section class="products">
-   <h1 class="title">latest products</h1>
-   <div class="box-container">
-      <p class="empty">No products added yet!</p>
    </div>
 </section>
 
@@ -106,17 +95,17 @@
    <section class="box-container">
       <div class="box">
          <h3>quick links</h3>
-         <a href="home.jsp"> <i class="fas fa-angle-right"></i> home</a>
-         <a href="html/shop.html"> <i class="fas fa-angle-right"></i> shop</a>
-         <a href="html/about.html"> <i class="fas fa-angle-right"></i> about</a>
+         <a href="home-servlet"> <i class="fas fa-angle-right"></i> home</a>
+         <a href="shop-servlet"> <i class="fas fa-angle-right"></i> shop</a>
+         <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
          <a href="html/contact.html"> <i class="fas fa-angle-right"></i> contact</a>
       </div>
       <div class="box">
          <h3>extra links</h3>
          <a href="html/cart.html"> <i class="fas fa-angle-right"></i> cart</a>
          <a href="html/wishlist.html"> <i class="fas fa-angle-right"></i> wishlist</a>
-         <a href="html/login.html"> <i class="fas fa-angle-right"></i> login</a>
-         <a href="html/register.html"> <i class="fas fa-angle-right"></i> register</a>
+         <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
+         <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>
       </div>
       <div class="box">
          <h3>contact info</h3>
