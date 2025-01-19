@@ -49,6 +49,15 @@
       </div>
    </div>
 </header>
+
+<!-- SHOW THE PRODUCT BY CATEGORY -->
+<section class="p-category">
+   <a href="category.html?category=spices">Aromatic Spices</a>
+   <a href="category.html?category=nutty">Sweet and Nutty</a>
+   <a href="category.html?category=herbal">Herbal</a>
+   <a href="category.html?category=spicy">Hot and Spicy</a>
+</section>
+
 <form action="shop-servlet" method="GET">
 <section class="products">
    <h1 class="title">Latest Products</h1>
@@ -65,8 +74,6 @@
       <c:if test="${not empty products}">
          <p>Products list is available!</p>
       </c:if>
-
-
    </div>
 </section>
 
