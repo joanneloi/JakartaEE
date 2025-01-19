@@ -1,6 +1,4 @@
-<!-- <%--@elvariable id="product" type="jakarta"--%> -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<%@ taglib prefix="c" uri="jakarta.tags.core" %>--%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +6,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>shop</title>
+   <title>category</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -52,60 +50,35 @@
 
 <!-- SHOW THE PRODUCT BY CATEGORY -->
 <section class="p-category">
-   <a href="category-servlet?category=spices">Aromatic Spices</a>
-   <a href="category-servlet?category=nutty">Sweet and Nutty</a>
-   <a href="category-servlet?category=herbal">Herbal</a>
-   <a href="category-servlet?category=spicy">Hot and Spicy</a>
+   <a href="?category=spices" class="${param.category == 'spices' ? 'active' : ''}">Aromatic Spices</a>
+   <a href="?category=nutty" class="${param.category == 'nutty' ? 'active' : ''}">Sweet and Nutty</a>
+   <a href="?category=herbal" class="${param.category == 'herbal' ? 'active' : ''}">Herbal</a>
+   <a href="?category=spicy" class="${param.category == 'spicy' ? 'active' : ''}">Hot and Spicy</a>
 </section>
 
-<form action="shop-servlet" method="GET">
-   <section class="products">
-      <h1 class="title">Latest Products</h1>
-      <div class="box-container">
-         <c:forEach var="product" items="${products}">
-            <div class="box" data-category="${product.category}">
-               <div class="price">RM<span>5</span>/-</div>
-               <a href="viewpage.jsp?id=${product.id}" class="fas fa-eye"></a>
-               <img src="${product.image}" alt="${product.name}">
-               <div class="name">${product.name}</div>
-               <label>
-                  <input type="number" min="1" value="1" class="qty">
-               </label>
-               <a href="addToCartServlet?id=${product.id}" class="btn">Add to Cart</a>
+<section class="products">
+   <h1 class="title">Products in ${param.category}</h1>
+   <div class="box-container">
+      <c:forEach var="product" items="${categoryProducts}">
+         <div class="box">
+            <div class="price">${product.price}</div>
+            <button class="fas fa-eye quick-view-btn" data-product="${product.description}"></button>
+            <img src="${product.image}" alt="${product.name}">
+            <div class="name">${product.name}</div>
+            <div class="details">
+               <h2 class="origin">${product.origin}</h2>
             </div>
-         </c:forEach>
-         <c:if test="${empty products}">
-            <p>No Product is available!</p>
-         </c:if>
-      </div>
-   </section>
-
-   <%--   <section class="product-details">--%>
-   <%--      <h1 class="title">Product Details</h1>--%>
-   <%--      <div class="box">--%>
-   <%--         <%--%>
-   <%--            // Retrieve the selected product from the request attribute--%>
-   <%--            org.example.project.ProductProfile product =--%>
-   <%--                    (org.example.project.ProductProfile) request.getAttribute("product");--%>
-
-   <%--            if (product != null) {--%>
-   <%--         %>--%>
-   <%--         <img src="<%= product.getImage() %>" alt="<%= product.getName() %>">--%>
-   <%--         <h3><%= product.getName() %></h3>--%>
-   <%--         <p><%= product.getDescription() %></p>--%>
-   <%--         <span><%= product.getPrice() %></span>--%>
-   <%--         <a href="addToCartServlet?id=<%= product.getId() %>" class="btn">Add to Cart</a>--%>
-   <%--         <%--%>
-   <%--         } else {--%>
-   <%--         %>--%>
-   <%--         <p>No product found. Please select a valid product.</p>--%>
-   <%--         <%--%>
-   <%--            }--%>
-   <%--         %>--%>
-   <%--      </div>--%>
-   <%--   </section>--%>
-</form>
-
+            <label>
+               <input type="number" min="1" value="1" class="qty">
+            </label>
+            <a href="addToCartServlet?id=${product.id}" class="btn">Add to Cart</a>
+         </div>
+      </c:forEach>
+      <c:if test="${empty categoryProducts}">
+         <p class="empty">No products available in this category!</p>
+      </c:if>
+   </div>
+</section>
 
 <footer class="footer">
    <section class="box-container">
@@ -119,7 +92,7 @@
       <div class="box">
          <h3>extra links</h3>
          <a href="cart.html"> <i class="fas fa-angle-right"></i> cart</a>
-         <a href="wishlist.jsp"> <i class="fas fa-angle-right"></i> wishlist</a>
+         <a href="wishlist.html"> <i class="fas fa-angle-right"></i> wishlist</a>
          <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
          <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>
       </div>
