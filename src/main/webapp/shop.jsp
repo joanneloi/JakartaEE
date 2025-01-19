@@ -113,7 +113,7 @@
       <div class="box">
          <h3>quick links</h3>
          <a href="home-servlet"> <i class="fas fa-angle-right"></i> home</a>
-         <a href="shop.jsp"> <i class="fas fa-angle-right"></i> shop</a>
+         <a href="shop-servlet"> <i class="fas fa-angle-right"></i> shop</a>
          <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
          <a href="contact.html"> <i class="fas fa-angle-right"></i> contact</a>
       </div>
