@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,28 +12,26 @@
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
-
 </head>
-
 <body>
 <header class="header">
-
    <div class="flex">
-      <a href="html/admin_page.html" class="logo">Jom Makan<span>.</span></a>
+      <a class="logo">Jom Makan<span>.</span></a>
       <nav class="navbar">
-         <a href="home-servlet">home</a>
+         <a href="home.jsp">home</a>
          <a href="shop-servlet">shop</a>
-         <a href="orders.html">orders</a>
+         <a href="order.jsp">orders</a>
          <a href="about.jsp">about</a>
-         <a href="contact.html">contact</a>
       </nav>
+
+      <!-- icon in the header: navigation -->
       <div class="icons">
          <div id="menu-btn" class="fas fa-bars"></div>
          <div id="user-btn" class="fas fa-user"></div>
-         <a href="search_page.html" class="fas fa-search"></a>
-<%--         <a href="wishlist.jsp"><i class="fas fa-heart"></i><span>(0)</span></a>--%>
-         <a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
+         <a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span>${not empty cart ? cart.itemCount : 0}</span></a>
       </div>
+
+      <!-- default profile: infomation user register -->
       <div class="profile">
          <img src="<%= session.getAttribute("userImage") != null ? session.getAttribute("userImage") : "../uploaded_img/default.png" %>" alt="User Image">
          <p><%= session.getAttribute("userName") != null ? session.getAttribute("userName") : "Guest" %></p>
@@ -95,30 +92,6 @@
    </div>
 </section>
 
-<!-- WHEN NEW PRODUCT IS ADDED BY ADMIN... -->
-<form action="home-servlet" method="GET">
-   <section class="products">
-      <h1 class="title">Latest Products</h1>
-      <div class="box-container">
-         <c:forEach var="product" items="${products}">
-            <div class="box" data-category="${product.category}">
-               <div class="price">RM<span>5</span>/-</div>
-               <button class="fas fa-eye quick-view-btn" data-product="${product.description}"></button>
-               <img src="${product.image}" alt="${product.name}">
-               <div class="name">${product.name}</div>
-               <label>
-                  <input type="number" min="1" value="1" class="qty">
-               </label>
-               <a href="addToCartServlet?id=${product.id}" class="btn">Add to Cart</a>
-            </div>
-         </c:forEach>
-         <c:if test="${empty products}">
-            <p>No Product is available!</p>
-         </c:if>
-      </div>
-   </section>
-</form>
-
 <footer class="footer">
    <section class="box-container">
       <div class="box">
@@ -126,12 +99,10 @@
          <a href="home-servlet"> <i class="fas fa-angle-right"></i> home</a>
          <a href="shop-servlet"> <i class="fas fa-angle-right"></i> shop</a>
          <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
-         <a href="contact.html"> <i class="fas fa-angle-right"></i> contact</a>
       </div>
       <div class="box">
          <h3>extra links</h3>
          <a href="cart.jsp"> <i class="fas fa-angle-right"></i> cart</a>
-<%--         <a href="wishlist.jsp"> <i class="fas fa-angle-right"></i> wishlist</a>--%>
          <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
          <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>
       </div>
@@ -157,4 +128,3 @@
 
 </body>
 </html>
-

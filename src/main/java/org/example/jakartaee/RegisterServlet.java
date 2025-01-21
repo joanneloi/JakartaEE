@@ -58,7 +58,6 @@ public class RegisterServlet extends HttpServlet {
 
         // Define path for the CSV file (outside of resources)
         String csvFilePath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIR + File.separator + CSV_FILE;
-        System.out.println("CSV File Path: " + csvFilePath);  // Debugging
 
         // Ensure the CSV file exists
         File csvFile = new File(csvFilePath);

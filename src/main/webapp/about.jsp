@@ -19,22 +19,19 @@
    <!-- HEADER -->
 <header class="header">
    <div class="flex">
-      <a href="admin_page.html" class="logo">Jom Makan<span>.</span></a>
+      <a class="logo">Jom Makan<span>.</span></a>
       <nav class="navbar">
-        <a href="home-servlet">home</a>
+        <a href="home.jsp">home</a>
         <a href="shop-servlet">shop</a>
-        <a href="orders.html">orders</a>
+        <a href="order.jsp">orders</a>
         <a href="about.jsp">about</a>
-        <a href="contact.html">contact</a>
       </nav>
 
       <!-- icon in the header: navigation -->
       <div class="icons">
          <div id="menu-btn" class="fas fa-bars"></div>
          <div id="user-btn" class="fas fa-user"></div>
-         <a href="search_page.html" class="fas fa-search"></a>
-         <a href="wishlist.jsp"><i class="fas fa-heart"></i><span>(0)</span></a>
-         <a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
+         <a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span>${not empty cart ? cart.itemCount : 0}</span></a>
       </div>
 
       <!-- default profile: infomation user register -->
@@ -59,7 +56,7 @@
          <h3>why choose us?</h3>
          <p>We bring you the finest selection of authentic Malaysian spices, sourced sustainably and packed with natural goodness. Our commitment to quality ensures every product is fresh, organic, and free from artificial additives, making it the perfect choice for healthy, flavorful cooking while supporting local farmers and traditions.</p>
          <!-- When click 'contact us' button, it will jump to contact page. -->
-         <a href="contact.html" class="btn">contact us</a>
+         <a href="contact.jsp" class="btn">contact us</a>
       </div>
       <div class="box">
          <img src="images/about2.png" alt="">
@@ -158,12 +155,10 @@
             <a href="home-servlet"> <i class="fas fa-angle-right"></i> home</a>
             <a href="shop-servlet"> <i class="fas fa-angle-right"></i> shop</a>
             <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
-            <a href="contact.html"> <i class="fas fa-angle-right"></i> contact</a>
          </div>
          <div class="box">
             <h3>extra links</h3>
             <a href="cart.jsp"> <i class="fas fa-angle-right"></i> cart</a>
-<%--            <a href="wishlist.jsp"> <i class="fas fa-angle-right"></i> wishlist</a>--%>
             <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
             <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>
          </div>

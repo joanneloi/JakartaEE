@@ -26,7 +26,6 @@ public class LoginServlet extends HttpServlet {
         if (email == null || email.isBlank() || password == null || password.isBlank()) {
             request.setAttribute("message", ERROR_REQUIRED_FIELDS);
             request.getRequestDispatcher("login.jsp").forward(request, response);
-            System.out.println("login");
             return;
         }
 
@@ -34,13 +33,9 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("userName", user.getName());
             session.setAttribute("userImage", "uploads/" + user.getImagePath());
-            response.sendRedirect("home.jsp");
-            response.sendRedirect("about.jsp");
-            response.sendRedirect("cart.jsp");
-            response.sendRedirect("catogory.jsp");
-            response.sendRedirect("shop.jsp");
+            session.setAttribute("userEmail", email);
+            response.sendRedirect("home-servlet");
         } else {
-            System.out.println("unsuccessful login");
             request.setAttribute("errorMessage", ERROR_INVALID_CREDENTIALS);
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }

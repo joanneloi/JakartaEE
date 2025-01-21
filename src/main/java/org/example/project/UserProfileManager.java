@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.util.*;
 
 public class UserProfileManager {
-    private static final String CSV_FILE_PATH = "/Users/joanneloi/apache-tomcat-10.1.34/webapps/JakartaEE_war//uploads/user_profile.csv";
+    private static final String CSV_FILE_PATH = "/Users/joanneloi/apache-tomcat-10.1.34/webapps/JakartaEE_war/uploads/user_profile.csv";
     private static final String UPLOAD_DIR = "/Users/joanneloi/apache-tomcat-10.1.34/webapps/JakartaEE_war/uploads";
 
     private static Map<String, UserProfile> userMap = new HashMap<>();
@@ -20,25 +20,6 @@ public class UserProfileManager {
         }
     }
 
-    //    public static void loadAllUsers() throws IOException {
-//        try (BufferedReader reader = new BufferedReader(
-////                new FileReader(Objects.requireNonNull(UserProfileManager.class.getClassLoader().getResoure(FILE_NAME)).getFile()))) {
-//            String line;
-//            int lineNumber = 0;
-//            while ((line = reader.readLine()) != null) {
-//                lineNumber++;
-//                try {
-//                    if (!line.trim().isEmpty()) {
-//                        UserProfile user = UserProfile.fromString(line);
-//                        userMap.put(user.getEmail(), user);
-//                        System.out.println("Loaded user: " + user.getEmail());
-//                    }
-//                } catch (IllegalArgumentException e) {
-//                    System.err.println("Skipping malformed line " + lineNumber + ": " + line);
-//                }
-//            }
-//        }
-//    }
     public static void loadAllUsers() throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(CSV_FILE_PATH))) {
             String line;
@@ -64,14 +45,6 @@ public class UserProfileManager {
     public static UserProfile findUserByEmail(String email) {
         System.out.println("Finding user by email: " + email);
         return userMap.get(email);
-    }
-
-    public static String getImagePathForUser(String email) {
-        UserProfile user = userMap.get(email);
-        if (user != null) {
-            return user.getImagePath();
-        }
-        return null;
     }
 
 //    public static void saveUser(UserProfile user) {

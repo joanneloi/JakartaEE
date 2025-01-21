@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +7,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>shopping cart</title>
+   <title>Order Details</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -48,48 +49,46 @@
    </div>
 </header>
 
-<section class="shopping-cart">
-   <h1 class="title">Shopping Cart</h1>
+<section class="order-details">
+   <h1 class="title">Order Details</h1>
 
-   <div class="box-container">
-      <c:if test="${not empty cart.items}">
-         <c:forEach var="item" items="${cart.items}">
-            <div class="box">
-               <img src="${item.product.image}" alt="${item.product.name}">
-               <div class="name">${item.product.name}</div>
-               <form action="updateCart" method="POST" class="quantity-form">
-                  <input type="hidden" name="id" value="${item.product.id}">
-                  <input type="number" name="qty" value="${item.quantity}" min="1" class="qty"
-                         onchange="this.form.submit()">
-               </form>
-               <div class="sub-total">
-                  Sub Total : RM<span class="amount">${item.subtotal}</span>/-
-               </div>
-               <form action="removeFromCart" method="POST" class="remove-form">
-                  <input type="hidden" name="id" value="${item.product.id}">
-                  <button type="submit" class="delete-btn">Remove</button>
-               </form>
-            </div>
-         </c:forEach>
-
-         <div class="cart-total">
-            <p>Total Amount : <span>RM${cart.total}/-</span></p>
-            <div class="flex">
-               <a href="shop-servlet" class="btn">Continue Shopping</a>
-               <form action="checkout" method="POST">
-                  <button type="submit" class="btn">Proceed to Checkout</button>
-               </form>
-            </div>
+   <c:if test="${not empty currentOrder}">
+      <div class="order-container">
+         <div class="order-info">
+            <p class="order-id">Order ID: ${currentOrder.id}</p>
+            <p class="order-date">Date: <fmt:formatDate value="${currentOrder.orderDate}" pattern="dd-MM-yyyy HH:mm:ss"/></p>
          </div>
-      </c:if>
 
-      <c:if test="${empty cart.items}">
-         <p class="empty">Your cart is empty</p>
-         <div class="cart-total">
+         <div class="order-items">
+            <c:forEach var="item" items="${currentOrder.items}">
+               <div class="order-item">
+                  <img src="${item.product.image}" alt="${item.product.name}">
+                  <div class="item-details">
+                     <h3>${item.product.name}</h3>
+                     <p>Price: ${item.product.price}</p>
+                     <p>Quantity: ${item.quantity}</p>
+                     <p>Subtotal: RM${item.subtotal}/-</p>
+                  </div>
+               </div>
+            </c:forEach>
+         </div>
+
+         <div class="order-total">
+            <p>Total Amount: <span>RM${currentOrder.total}/-</span></p>
+         </div>
+
+         <div class="order-actions">
             <a href="shop-servlet" class="btn">Continue Shopping</a>
          </div>
-      </c:if>
-   </div>
+      </div>
+   </c:if>
+
+   <c:if test="${empty currentOrder}">
+      <p class="empty">Order Not Found.</p>
+      <div class="order-actions">
+         <a href="shop-servlet" class="btn">Continue Shopping</a>
+      </div>
+   </c:if>
 </section>
 
 <footer class="footer">

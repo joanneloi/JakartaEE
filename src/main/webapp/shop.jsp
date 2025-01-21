@@ -9,31 +9,34 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>shop</title>
+
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 
-
 <header class="header">
    <div class="flex">
-      <a href="admin_page.html" class="logo">Jom Makan<span>.</span></a>
+      <a class="logo">Jom Makan<span>.</span></a>
       <nav class="navbar">
          <a href="home.jsp">home</a>
          <a href="shop-servlet">shop</a>
-         <a href="orders.html">orders</a>
+         <a href="order.jsp">orders</a>
          <a href="about.jsp">about</a>
-         <a href="contact.html">contact</a>
       </nav>
+
+      <!-- icon in the header: navigation -->
       <div class="icons">
          <div id="menu-btn" class="fas fa-bars"></div>
          <div id="user-btn" class="fas fa-user"></div>
-         <a href="search_page.html" class="fas fa-search"></a>
-<%--         <a href="wishlist.jsp"><i class="fas fa-heart"></i><span>(0)</span></a>--%>
-         <a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span>(0)</span></a>
+         <a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span>${not empty cart ? cart.itemCount : 0}</span></a>
       </div>
+
+      <!-- default profile: infomation user register -->
       <div class="profile">
          <img src="<%= session.getAttribute("userImage") != null ? session.getAttribute("userImage") : "../uploaded_img/default.png" %>" alt="User Image">
          <p><%= session.getAttribute("userName") != null ? session.getAttribute("userName") : "Guest" %></p>
@@ -47,7 +50,6 @@
    </div>
 </header>
 
-
 <!-- SHOW THE PRODUCT BY CATEGORY -->
 <section class="p-category">
    <a href="category-servlet?category=spices">Aromatic Spices</a>
@@ -56,29 +58,32 @@
    <a href="category-servlet?category=spicy">Hot and Spicy</a>
 </section>
 
-<!-- SHOW PRODUCT-->
 <form action="shop-servlet" method="GET">
    <section class="products">
       <h1 class="title">Latest Products</h1>
       <div class="box-container">
+         <c:if test="${empty products}">
+            <p class="empty">No Product is available!</p>
+         </c:if>
          <c:forEach var="product" items="${products}">
             <div class="box" data-category="${product.category}">
-               <div class="price">RM<span>5</span>/-</div>
+               <div class="price">${product.price}</div>
                <a href="viewpage.jsp?id=${product.id}" class="fas fa-eye"></a>
                <img src="${product.image}" alt="${product.name}">
                <div class="name">${product.name}</div>
-               <label>
-                  <input type="number" min="1" value="1" class="qty">
-               </label>
-               <a href="addToCartServlet?id=${product.id}" class="btn">Add to Cart</a>
+               <form action="addToCartServlet" method="GET">
+                  <input type="hidden" name="id" value="${product.id}">
+                  <label>
+                     <input type="number" name="qty" min="1" value="1" class="qty">
+                  </label>
+                  <button type="submit" class="btn">Add to Cart</button>
+               </form>
             </div>
          </c:forEach>
-         <c:if test="${empty products}">
-            <p>No Product is available!</p>
-         </c:if>
       </div>
    </section>
 </form>
+
 
 <footer class="footer">
    <section class="box-container">
@@ -87,12 +92,10 @@
          <a href="home-servlet"> <i class="fas fa-angle-right"></i> home</a>
          <a href="shop-servlet"> <i class="fas fa-angle-right"></i> shop</a>
          <a href="about.jsp"> <i class="fas fa-angle-right"></i> about</a>
-         <a href="contact.html"> <i class="fas fa-angle-right"></i> contact</a>
       </div>
       <div class="box">
          <h3>extra links</h3>
          <a href="cart.jsp"> <i class="fas fa-angle-right"></i> cart</a>
-<%--         <a href="wishlist.jsp"> <i class="fas fa-angle-right"></i> wishlist</a>--%>
          <a href="login.jsp"> <i class="fas fa-angle-right"></i> login</a>
          <a href="register.jsp"> <i class="fas fa-angle-right"></i> register</a>
       </div>
@@ -114,9 +117,7 @@
    <p class="credit"> &copy; CAT201 Project 2024 by <span>Team YumYum</span> | Jom Makan </p>
 </footer>
 
-
 <script src="js/script.js"></script>
-
 
 </body>
 </html>

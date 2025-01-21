@@ -13,26 +13,16 @@
 
     <!-- Welcome file list -->
     <welcome-file-list>
-        <welcome-file>home.jsp</welcome-file>
+        <welcome-file>login.jsp</welcome-file> <!-- Specify the default page here -->
     </welcome-file-list>
 
-
     <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>org.example.jakartaee.RegisterServlet</servlet-class>
+        <servlet-name>ShopServlet</servlet-name>
+        <servlet-class>org.example.jakartaee.ShopServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register-servlet</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>org.example.jakartaee.LoginServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/login-servlet</url-pattern>
+        <servlet-name>ShopServlet</servlet-name>
+        <url-pattern>/shop-servlet</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -44,24 +34,5 @@
         <url-pattern>/home-servlet</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>CategoryServlet</servlet-name>
-        <servlet-class>org.example.jakartaee.CategoryServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CategoryServlet</servlet-name>
-        <url-pattern>/category-servlet</url-pattern>
-    </servlet-mapping>
-
-
-    <servlet>
-        <servlet-name>ShopServlet</servlet-name>
-        <servlet-class>org.example.jakartaee.ShopServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ShopServlet</servlet-name>
-        <url-pattern>/shop-servlet</url-pattern>
-    </servlet-mapping>
-    <!-- Other configurations like servlets, filters, etc. -->
 
 </web-app>
